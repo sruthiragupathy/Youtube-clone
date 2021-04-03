@@ -1,0 +1,70 @@
+.video__card {
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.card__img {
+  width: 100%;
+}
+
+.card__img img {
+  width: 100%;
+}
+
+.video-card__description {
+  padding: 0.5rem 0;
+  height: 5.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.video-card__profile-pic {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  border: 2.5px solid var(--purple);
+  padding: 0.1rem;
+}
+
+.video-card__txt {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 0 1rem;
+}
+
+.txt__title {
+  font-weight: 1000;
+  font-size: 1rem;
+  text-align: justify;
+}
+
+.grey-txt {
+  color: var(--midgrey);
+}
+
+.btn-icon {
+  /* padding-right: 0.5rem; */
+  width: 2.75rem;
+  height: 1.75rem;
+  color: var(--midgrey);
+}
+
+.btn-icon:hover {
+  background: var(--light-grey1);
+}
+
+.fa-ellipsis-v {
+  font-size: 1.25rem;
+}
+
+@media only screen and (min-width: 750px) {
+  .video-card__description {
+    height: 6.5rem;
+  }
+  .video__card:hover {
+    transform: scale(1.05);
+  }
+}
