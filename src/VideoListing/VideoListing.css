@@ -2,6 +2,20 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 1.5rem;
+  margin-left: 5rem;
+  /* z-index: -1; */
+  position: relative;
+}
+
+.background-overlay {
+  background: rgb(0, 0, 0, 0.65);
+  height: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
 }
 
 @media only screen and (min-width: 600px) {
@@ -10,6 +24,7 @@
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 3rem;
     grid-row-gap: 2rem;
+    margin-left: 5rem;
   }
 }
 

@@ -1,0 +1,41 @@
+.top-navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0.5rem;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  right: 0;
+  margin-left: 4rem;
+  height: 2rem;
+  background: #fff;
+  z-index: 2;
+}
+
+.fa-youtube-square {
+  color: var(--darkred);
+  margin-right: 0.5rem;
+}
+
+.youtube__title {
+  font-weight: 1000;
+  font-size: 1.25rem;
+}
+
+.top-navbar__form {
+  display: flex;
+}
+
+.form__input {
+  padding: 0.75rem 0.5rem;
+  width: 55vw;
+}
+
+.form__btn {
+  padding: 0 0.5rem;
+}
+
+.fa-search {
+  font-size: 1.25rem;
+  /* color: var(--midgrey); */
+}

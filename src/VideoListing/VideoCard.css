@@ -2,6 +2,7 @@
   width: 100%;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  /* z-index: -5; */
 }
 
 .card__img {
@@ -17,13 +18,14 @@
   height: 5.5rem;
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 
 .video-card__profile-pic {
   width: 2.25rem;
   height: 2.25rem;
   border-radius: 50%;
-  border: 2.5px solid var(--purple);
+  border: 2.5px solid var(--darkred);
   padding: 0.1rem;
 }
 

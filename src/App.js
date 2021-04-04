@@ -1,13 +1,17 @@
 import {useEffect} from "react";
-import logo from './logo.svg';
 import './App.css';
 import { RestApiCalls } from './RestApiCalls';
 import { useVideoList } from "./Context/VideoLibraryContext";
 import { VideoListing } from "./VideoListing/VideoListing";
+import { TopNavBar } from "./Navbar/TopNavBar.jsx";
+import { SideBar } from "./Navbar/SideBar";
+import {Switch,Route} from "react-router-dom";
+import { useMyPlaylist } from "./Context/MyPlaylistContext";
 
 
 function App() {
   const {videoLibrary,videoLibraryDispatch} = useVideoList();
+  const {myPlaylist,myPlaylistDispatch} = useMyPlaylist();
 
   useEffect(()=>{
     (async function(){
@@ -18,10 +22,17 @@ function App() {
     console.log({videoLibrary});
 
   },[])
+  console.log({myPlaylist})
   return (
-    <div className="App">
+    <div className={`App`}>
+      {videoLibrary.showModal && <div className = "background-overlay"></div>}
+      <TopNavBar/>
+      <SideBar/>
       {videoLibrary.videoList.length === 0 && <p>Data not loaded yet</p>}
-      <VideoListing/>
+      <Switch>
+        <Route path = "/" component = {VideoListing}/>
+      </Switch>
+      
       
     </div>
   );

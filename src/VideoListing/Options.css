@@ -1,0 +1,40 @@
+.options-container {
+  position: absolute;
+  background: #fff;
+  z-index: 2;
+  right: 1.25rem;
+  width: 15rem;
+  top: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.options__btn {
+  background: transparent;
+  border: 0;
+  padding: 1rem 0.75rem;
+  text-align: left;
+  width: 100%;
+  color: var(--midgrey);
+  font-size: 1rem;
+}
+
+.options__btn:hover {
+  color: var(--textgrey);
+}
+
+.options__btn:nth-child(2) {
+  padding-top: 0;
+}
+
+.options__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  background: transparent;
+  color: var(--midgrey);
+}
+
+.options__close:hover {
+  background: var(--light-grey1);
+}
