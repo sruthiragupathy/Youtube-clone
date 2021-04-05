@@ -2,3 +2,23 @@
   box-sizing: border-box;
   text-align: center;
 }
+
+.no-videos {
+  padding: 2rem;
+  font-size: 1.25rem;
+  color: var(--midgrey);
+}
+
+.heading {
+  font-size: 1.5rem;
+  font-weight: 1000;
+  text-align: left;
+  padding: 1rem 1rem 1.25rem 1rem;
+  width: 100vw;
+}
+
+@media only screen and (min-width: 900px) {
+  .heading {
+    width: 70%;
+  }
+}

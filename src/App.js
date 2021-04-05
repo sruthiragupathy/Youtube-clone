@@ -7,6 +7,7 @@ import { TopNavBar } from "./Navbar/TopNavBar.jsx";
 import { SideBar } from "./Navbar/SideBar";
 import {Switch,Route} from "react-router-dom";
 import { useMyPlaylist } from "./Context/MyPlaylistContext";
+import { WatchLater } from "./Watch Later/WatchLater";
 
 
 function App() {
@@ -30,7 +31,8 @@ function App() {
       <SideBar/>
       {videoLibrary.videoList.length === 0 && <p>Data not loaded yet</p>}
       <Switch>
-        <Route path = "/" component = {VideoListing}/>
+        <Route path = "/" exact component = {VideoListing}/>
+        <Route path = "/watchlater" component = {WatchLater}/>
       </Switch>
       
       

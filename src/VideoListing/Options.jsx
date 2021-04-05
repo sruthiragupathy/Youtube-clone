@@ -11,7 +11,7 @@ export const Options = ({showOptions,video}) => {
         videoLibraryDispatch({type:"SET_SHOW_OPTIONS",payload:"0"})
     }
     const saveToWatchLaterHandler = () => {
-        myPlaylistDispatch({type:"ADD_TO_WATCH_LATER",payload:video.id})
+        myPlaylistDispatch({type:"ADD_TO_WATCH_LATER",payload:video})
         videoLibraryDispatch({type:"SET_SHOW_OPTIONS",payload:"0"})
     }
     const saveToPlaylistHandler = () => {
