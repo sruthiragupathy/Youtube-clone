@@ -62,7 +62,7 @@ export const Modal = ({video}) => {
             </div>
             {
                 myPlaylist.myLibrary.map(library=>{
-                    return library.name === "Liked Videos" ? null :
+                    return library.name  === "Liked Videos" ? null :
                     
                         <div className = "library">
                             <input 

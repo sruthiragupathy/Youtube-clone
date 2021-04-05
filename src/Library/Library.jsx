@@ -10,8 +10,9 @@ export const Library = () => {
 
                     {
                         myPlaylist.myLibrary.map(library => {
+                            console.log(library["videoList"].length)
                             return (
-                                <LibraryCard key = {library.id} library = {library} />
+                                library["videoList"].length ? <LibraryCard key = {library.id} library = {library} /> : null
                             )
                         })
                     }

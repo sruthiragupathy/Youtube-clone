@@ -22,8 +22,8 @@ export const LibraryCard = ({library}) => {
             <div className = "horizontal-card__option">
                 <button className = "btn-transparent">Remove from playlist</button>
             </div> */}
-            <button class = "btn-icon br trash" >
-                <i class="fa fa-trash-o fa-2x"></i>
+            <button className = "btn-icon br trash" >
+                <i className ="fa fa-trash-o fa-2x"></i>
             </button>
         </div>
         
