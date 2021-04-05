@@ -43,12 +43,31 @@
   height: 1.5rem;
   border: 0;
   background: transparent;
+  z-index: 3;
 }
 
 .btn-options:hover {
   background: var(--light-grey1);
 }
 
+.horizontal-card__option {
+  position: absolute;
+  background: #fff;
+  right: 1.75rem;
+  top: 2.5rem;
+  padding: 0.5rem 1rem;
+}
+
+.btn-transparent {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  height: 100%;
+}
+
+.relative {
+  position: relative;
+}
 @media only screen and (min-width: 900px) {
   .list {
     width: 70%;

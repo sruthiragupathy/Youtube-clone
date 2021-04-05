@@ -6,6 +6,10 @@ export const addNewItemToExistingArray = (array,itemToAdd) => {
     return array;
 }
 
+export const removeExistingItemFromArray = (array,video) => {
+    return array.filter(item => item.id!==video.id);
+}
+
 export const toggleCheckBox = (array,object) => {
     return array.map(item => {
         if(item.id === object.id){
