@@ -62,7 +62,8 @@ export const Modal = ({video}) => {
             </div>
             {
                 myPlaylist.myLibrary.map(library=>{
-                    return (
+                    return library.name === "Liked Videos" ? null :
+                    
                         <div className = "library">
                             <input 
                             type = "checkbox" 
@@ -72,7 +73,7 @@ export const Modal = ({video}) => {
                             onChange = {() => (checkboxHandler(library,video))}/>
                             <label htmlFor = {library}>{library.name}</label>
                         </div>
-                    )
+                    
                 })
             }
         </div>

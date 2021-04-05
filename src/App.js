@@ -8,6 +8,7 @@ import { SideBar } from "./Navbar/SideBar";
 import {Switch,Route} from "react-router-dom";
 import { useMyPlaylist } from "./Context/MyPlaylistContext";
 import { WatchLater } from "./Watch Later/WatchLater";
+import { Library } from "./Library/Library";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
       <Switch>
         <Route path = "/" exact component = {VideoListing}/>
         <Route path = "/watchlater" component = {WatchLater}/>
+        <Route path = "/library" component = {Library}/>
       </Switch>
       
       

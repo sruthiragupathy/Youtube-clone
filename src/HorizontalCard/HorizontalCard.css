@@ -5,7 +5,7 @@
   width: 100vw;
   background: var(--light-grey);
   padding: 1rem;
-  border-bottom: 1px solid var(--light-grey1);
+  border-bottom: 1px solid var(--lightgrey2);
 }
 
 .list:hover {
