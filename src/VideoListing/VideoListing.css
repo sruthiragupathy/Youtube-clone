@@ -3,7 +3,7 @@
   grid-template-columns: 1fr;
   grid-gap: 1.5rem;
   /* margin-left: 5rem; */
-  /* z-index: -1; */
+  z-index: -1;
   position: relative;
 }
 
@@ -24,7 +24,6 @@
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 3rem;
     grid-row-gap: 2rem;
-    margin-left: 5rem;
   }
 }
 
@@ -33,6 +32,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 1.75rem;
     grid-row-gap: 2rem;
+    margin-left: 5rem;
   }
 
   @media only screen and (min-width: 1250px) {
