@@ -8,7 +8,7 @@ export const HorizontalCard = ({video}) => {
     const {myPlaylistDispatch} = useMyPlaylist();
 
     const deleteFromPlaylist = () => {
-        myPlaylistDispatch({type:"REMOVE_FROM_WATCH_LATER",payload:video})
+        console.log("delete")
     }
     return (
         

@@ -47,7 +47,7 @@
   color: var(--midgrey);
 }
 
-.btn-icon {
+.video__card .btn-icon {
   /* padding-right: 0.5rem; */
   width: 2.75rem;
   height: 1.75rem;
