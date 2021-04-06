@@ -5,14 +5,14 @@ import "./WatchLater.css"
 export const WatchLater = () => {
     const {myPlaylist,myPlaylistDispatch} = useMyPlaylist();
     return (
-        <div>
+        <div className = "flex-center margin-left-4">
             {
                 myPlaylist.watchLaterList.length === 0 ? 
                 <div className = "no-videos">
                     "No videos to show"
                 </div> : 
                 
-                    <div className = "stacked-list flex-center">
+                    <div className = "stacked-list">
                     <div className = "heading">Watch Later</div>
 
                     {

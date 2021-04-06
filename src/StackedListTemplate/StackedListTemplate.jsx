@@ -10,10 +10,9 @@ export const StackedListTemplate = () => {
         return myPlaylist.myLibrary.find( library => library.name === libraryName)
     }
     return (
-        <div>
+        <div className = "flex-center margin-left-4">
             {
-                
-                    <div className = "stacked-list flex-center">
+                    <div className = "stacked-list">
                     <div className = "back_link">
                     <Link to = "/library" >{`> Back to My Library`}</Link>
 

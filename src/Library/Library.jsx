@@ -5,7 +5,8 @@ import "../Watch Later/WatchLater"
 
 export const Library = () => {
     const {myPlaylist} = useMyPlaylist();
-    return <div className = "stacked-list flex-center">
+    return  <div className = "flex-center margin-left-4">
+        <div className = "stacked-list">
                     <div className = "heading">My Library</div>
 
                     {
@@ -16,6 +17,7 @@ export const Library = () => {
                             )
                         })
                     }
+                    </div>
                     </div>
                 
     

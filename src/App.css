@@ -11,7 +11,7 @@
 }
 
 .heading {
-  width: 100%;
+  /* width: 100%; */
   font-size: 1.5rem;
   font-weight: 1000;
   text-align: left;
@@ -19,7 +19,7 @@
 }
 
 .back_link {
-  width: 100%;
+  /* width: 100%; */
   padding: 1rem 1rem 0 1.75rem;
   text-decoration: underline;
   text-align: left;
@@ -27,4 +27,14 @@
 
 .trash {
   padding: 0;
+}
+
+.margin-left-4 {
+  margin-left: 0;
+}
+
+@media screen and (min-width: 900px) {
+  .margin-left-4 {
+    margin-left: 4rem;
+  }
 }

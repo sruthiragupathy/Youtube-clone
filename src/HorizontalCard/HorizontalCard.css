@@ -3,6 +3,7 @@
   justify-content: space-between;
   align-items: flex-start;
   /* width: 100vw; */
+  box-sizing: border-box;
   width: 100%;
   margin: auto;
   background: var(--light-grey);
@@ -67,9 +68,6 @@
   height: 100%;
 }
 
-.relative {
-  position: relative;
-}
 @media only screen and (min-width: 900px) {
   .details__title {
     line-height: 1.5rem;
