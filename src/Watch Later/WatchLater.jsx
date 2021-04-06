@@ -11,7 +11,7 @@ export const WatchLater = () => {
                 <div className = "no-videos">
                     "No videos to show"
                 </div> : 
-                <div className = "margin-left-4">
+                
                     <div className = "stacked-list flex-center">
                     <div className = "heading">Watch Later</div>
 
@@ -23,7 +23,7 @@ export const WatchLater = () => {
                         })
                     }
                     </div>
-                </div>
+                
             }
         </div>
     )

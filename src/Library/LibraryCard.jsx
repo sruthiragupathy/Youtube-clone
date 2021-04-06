@@ -1,3 +1,5 @@
+import {NavLink} from "react-router-dom";
+
 export const LibraryCard = ({library}) => {
     const {id,name,videoList} = library;
 
@@ -6,7 +8,7 @@ export const LibraryCard = ({library}) => {
     // }
     return (
         
-        <div className = "list relative">
+            <NavLink to = {`/library/${library.name}`} className = "list relative">
             <div className = "list__img">
                 <img src = {videoList[0].snippet.thumbnails.default.url} alt = {name}/>
             </div>
@@ -25,7 +27,8 @@ export const LibraryCard = ({library}) => {
             <button className = "btn-icon br trash" >
                 <i className ="fa fa-trash-o fa-2x"></i>
             </button>
-        </div>
+            </NavLink>
+    
         
         
     )

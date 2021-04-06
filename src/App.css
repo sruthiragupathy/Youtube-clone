@@ -1,6 +1,8 @@
 .App {
   box-sizing: border-box;
   text-align: center;
+  margin: 0;
+  width: 100vw;
 }
 
 .no-videos {
@@ -10,15 +12,16 @@
 }
 
 .heading {
+  width: 100%;
   font-size: 1.5rem;
   font-weight: 1000;
   text-align: left;
-  padding: 1rem 1rem 1.25rem 1rem;
-  width: 100vw;
+  padding: 1rem 1rem 1rem 1.75rem;
 }
 
-@media only screen and (min-width: 900px) {
-  .heading {
-    width: 70%;
-  }
+.back_link {
+  width: 100%;
+  padding: 1rem 1rem 0 1.75rem;
+  text-decoration: underline;
+  text-align: left;
 }

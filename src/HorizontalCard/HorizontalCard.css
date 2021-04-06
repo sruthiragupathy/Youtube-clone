@@ -2,7 +2,9 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  width: 100vw;
+  /* width: 100vw; */
+  width: 100%;
+  margin: auto;
   background: var(--light-grey);
   padding: 1rem;
   border-bottom: 1px solid var(--lightgrey2);
@@ -69,10 +71,6 @@
   position: relative;
 }
 @media only screen and (min-width: 900px) {
-  .list {
-    width: 70%;
-    margin: auto;
-  }
   .details__title {
     line-height: 1.5rem;
   }
