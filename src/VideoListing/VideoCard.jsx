@@ -1,8 +1,10 @@
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 import { useVideoList } from "../Context/VideoLibraryContext";
 import { Modal } from "../Modal/Modal";
 import { Options } from "./Options";
 import "./VideoCard.css";
+
 
 export const VideoCard = ({video}) => {
     const {id,snippet} = video;
@@ -15,12 +17,13 @@ export const VideoCard = ({video}) => {
         return title;
     }
 
-    const handleMoreOptions = () => {
+    const handleMoreOptions = (e) => {
+        e.preventDefault();
         videoLibraryDispatch({type:"SET_SHOW_OPTIONS",payload:id})
     }
    
     return <>
-    <div className = "video__card">
+    <div className = "video__card pointer">
         <div className = "card__img">
             <img src = {thumbnails.medium.url} alt ={title}/>
         </div>

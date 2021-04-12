@@ -5,7 +5,6 @@ export const TopNavBar = () => {
         <nav className = "top-navbar">
             <div>
                 <i className = "fa fa-youtube-square fa-2x"></i>
-                <span className = "youtube__title">Youtube</span>
             </div>
             <div className = "top-navbar__form">
                 <input placeholder = "Search" className = "form__input"/>

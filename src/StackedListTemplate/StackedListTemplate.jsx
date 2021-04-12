@@ -2,6 +2,8 @@ import {useParams} from "react-router-dom";
 import { useMyPlaylist } from "../Context/MyPlaylistContext";
 import { HorizontalCard } from "../HorizontalCard/HorizontalCard";
 import {Link} from "react-router-dom";
+import { SideBar } from "../Navbar/SideBar";
+
 export const StackedListTemplate = () => {
     const {libraryName}= useParams();
     const {myPlaylist,myPlaylistDispatch} = useMyPlaylist();
@@ -10,6 +12,8 @@ export const StackedListTemplate = () => {
         return myPlaylist.myLibrary.find( library => library.name === libraryName)
     }
     return (
+        <>
+        <SideBar/>
         <div className = "flex-center margin-left-4">
             {
                     <div className = "stacked-list">
@@ -30,5 +34,6 @@ export const StackedListTemplate = () => {
                 
             }
         </div>
+        </>
     )
 }

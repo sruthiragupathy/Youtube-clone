@@ -1,10 +1,13 @@
 import { useMyPlaylist } from "../Context/MyPlaylistContext"
 import { HorizontalCard } from "../HorizontalCard/HorizontalCard";
+import { SideBar } from "../Navbar/SideBar";
 import "./WatchLater.css"
 
 export const WatchLater = () => {
     const {myPlaylist,myPlaylistDispatch} = useMyPlaylist();
     return (
+        <>
+        <SideBar/>
         <div className = "flex-center margin-left-4">
             {
                 myPlaylist.watchLaterList.length === 0 ? 
@@ -26,5 +29,6 @@ export const WatchLater = () => {
                 
             }
         </div>
+        </>
     )
 }

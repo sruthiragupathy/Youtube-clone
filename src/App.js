@@ -10,6 +10,8 @@ import { useMyPlaylist } from "./Context/MyPlaylistContext";
 import { WatchLater } from "./Watch Later/WatchLater";
 import { Library } from "./Library/Library";
 import { StackedListTemplate } from "./StackedListTemplate/StackedListTemplate";
+import { PlayVideoPage } from "./PlayVideoPage/PlayVideoPage";
+
 
 
 function App() {
@@ -30,13 +32,13 @@ function App() {
     <div className={`App`}>
       {videoLibrary.showModal && <div className = "background-overlay"></div>}
       <TopNavBar/>
-      <SideBar/>
       {videoLibrary.videoList.length === 0 && <p>Data not loaded yet</p>}
       <Switch>
         <Route path = "/" exact component = {VideoListing}/>
         <Route path = "/watchlater" component = {WatchLater}/>
         <Route path = "/library/:libraryName" component = {StackedListTemplate}/>
         <Route path = "/library" component = {Library}/>
+        <Route path = "/video/:videoId" component = {PlayVideoPage} />
       </Switch>
       
       

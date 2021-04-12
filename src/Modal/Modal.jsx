@@ -13,10 +13,12 @@ export const Modal = ({video}) => {
     const [newLibrary,setNewLibrary] = useState("");
     const [error,setError] = useState("");
     console.log({video});
-    const createNewPlaylistHandler = () => {
+    const createNewPlaylistHandler = (e) => {
+        e.preventDefault();
         setOpenForm(true);
     }
-    const closeHandler = (library) => {
+    const closeHandler = (e) => {
+        e.preventDefault();
         videoLibraryDispatch({type:"SET_SHOW_MODAL",payload:""})
         myPlaylistDispatch({type:"SET_ALL_CHECKED_TO_FALSE"})
 
@@ -27,11 +29,13 @@ export const Modal = ({video}) => {
     }
 
     const inputChangeHandler = (e) => {
+        e.preventDefault();
         setError("")
         setNewLibrary(e.target.value);
     }
 
-    const createNewLibraryHandler = () => {
+    const createNewLibraryHandler = (e) => {
+        e.preventDefault();
         if(newLibrary){
         myPlaylistDispatch({type:"ADD_NEW_LIBRARY_TO_PLAYLIST",payload:newLibrary,value:video})
         videoLibraryDispatch({type:"SET_SHOW_MODAL",payload:""})

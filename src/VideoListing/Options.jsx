@@ -10,11 +10,13 @@ export const Options = ({showOptions,video}) => {
     const closeInOptionsHandler = () => {
         videoLibraryDispatch({type:"SET_SHOW_OPTIONS",payload:"0"})
     }
-    const saveToWatchLaterHandler = () => {
+    const saveToWatchLaterHandler = (e) => {
+        e.preventDefault();
         myPlaylistDispatch({type:"ADD_TO_WATCH_LATER",payload:video})
         videoLibraryDispatch({type:"SET_SHOW_OPTIONS",payload:"0"})
     }
-    const saveToPlaylistHandler = () => {
+    const saveToPlaylistHandler = (e) => {
+        e.preventDefault();
         videoLibraryDispatch({type:"SET_SHOW_OPTIONS",payload:"0"})
         videoLibraryDispatch({type:"SET_SHOW_MODAL",payload:video.id})
     }

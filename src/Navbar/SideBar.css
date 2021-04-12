@@ -5,7 +5,7 @@
 @media only screen and (min-width: 900px) {
   .sidebar {
     position: fixed;
-    top: 0;
+    top: 3rem;
     left: 0;
     width: 4rem;
     background: #fff;

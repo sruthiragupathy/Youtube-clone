@@ -1,8 +1,8 @@
 .video__card {
   width: 100%;
-  cursor: pointer;
+  /* cursor: pointer; */
   transition: all 0.2s ease-in-out;
-  /* z-index: -5; */
+  /* z-index: 4; */
 }
 
 .card__img {
@@ -47,14 +47,15 @@
   color: var(--midgrey);
 }
 
-.video__card .btn-icon {
+.video-card__description .btn-icon {
   /* padding-right: 0.5rem; */
-  width: 2.75rem;
-  height: 1.75rem;
+  width: 3.5rem;
+  height: 1.5rem;
   color: var(--midgrey);
+  text-align: center;
 }
 
-.btn-icon:hover {
+.video-card__description .btn-icon:hover {
   background: var(--light-grey1);
 }
 
