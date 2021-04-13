@@ -66,9 +66,7 @@ export const Modal = ({video}) => {
             </div>
             {
                 myPlaylist.myLibrary.map(library=>{
-                    return library.name  === "Liked Videos" ? null :
-                    
-                        <div className = "library">
+                    return <div className = "library">
                             <input 
                             type = "checkbox" 
                             checked = {library.checked} 

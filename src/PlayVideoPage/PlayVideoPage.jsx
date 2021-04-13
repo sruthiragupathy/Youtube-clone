@@ -9,10 +9,10 @@ export const PlayVideoPage = () => {
         return videoLibrary.find( video => video.id === videoId)
     }
 
-    const {snippet} = getVideoById(videoId);
+    const video = getVideoById(videoId);
     return(
         <div className = "main-video-page">
-            <VideoContainer snippet = {snippet} videoId = {videoId} />
+            <VideoContainer video = {video} />
         </div>
     )
 }

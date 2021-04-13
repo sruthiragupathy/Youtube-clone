@@ -1,4 +1,4 @@
-import { addNewItemToExistingArray, addNewItemToLibrary, removeExistingItemFromArray, toggleCheckBox } from "../arrayManipulation";
+import { addNewItemToExistingArray, addNewCategoryToLibrary, removeExistingItemFromArray, toggleCheckBox, removeVideoFromACategory, addVideoToACategory } from "../arrayManipulation";
 import {v4 as uuidv4} from "uuid";
 
 
@@ -9,7 +9,11 @@ export const myPlaylistReducer = (myPlaylist,{type,payload,value}) => {
         case "REMOVE_FROM_WATCH_LATER":
             return {...myPlaylist,watchLaterList:removeExistingItemFromArray(myPlaylist.watchLaterList,payload)}
         case "ADD_TO_LIBRARY":
-           return {...myPlaylist,myLibrary:addNewItemToLibrary(myPlaylist.myLibrary,payload,value)}
+           return {...myPlaylist,myLibrary:addNewCategoryToLibrary(myPlaylist.myLibrary,payload,value)}
+        case "ADD_VIDEO_TO_LIBRARY":
+            return {...myPlaylist,myLibrary:addVideoToACategory(myPlaylist.myLibrary,payload,value)}
+        case "REMOVE_VIDEO_FROM_LIBRARY":
+            return {...myPlaylist, myLibrary:removeVideoFromACategory(myPlaylist.myLibrary,payload,value)}
         case "TOGGLE_CHECKED":
             return {...myPlaylist,myLibrary:toggleCheckBox(myPlaylist.myLibrary,payload)}
         case "SET_ALL_CHECKED_TO_FALSE":

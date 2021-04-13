@@ -33,6 +33,10 @@
   margin-left: 0;
 }
 
+.purple-txt {
+  color: var(--purple);
+}
+
 @media screen and (min-width: 900px) {
   .margin-left-4 {
     margin-left: 4rem;

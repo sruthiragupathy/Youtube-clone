@@ -2,20 +2,36 @@ import "./VideoContainer.css";
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import PlaylistAddRoundedIcon from '@material-ui/icons/PlaylistAddRounded';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
+import BookmarkIcon from '@material-ui/icons/Bookmark';
+import { getIdsInPlaylistCategory } from "../utils/utils";
+import { useMyPlaylist } from "../Context/MyPlaylistContext";
 
 
-export const VideoContainer = ({snippet, videoId}) => {
+export const VideoContainer = ({video}) => {
+    const {snippet, id} = video;
+    const {myPlaylist, myPlaylistDispatch} = useMyPlaylist();
+
+    const addToLibraryHandler = (playlistCategory) => 
+    {
+        console.log(getIdsInPlaylistCategory(myPlaylist.myLibrary, playlistCategory).includes(id))
+        if(getIdsInPlaylistCategory(myPlaylist.myLibrary, playlistCategory).includes(id)){
+            myPlaylistDispatch({type:"REMOVE_VIDEO_FROM_LIBRARY",payload:playlistCategory,value:video.id})
+        }
+        else{
+            myPlaylistDispatch({type:"ADD_VIDEO_TO_LIBRARY",payload:playlistCategory,value:video})
+        }
+    }
     return (
         <div className = "main-video__container">
             <div>
             <iframe 
             width="100%" 
             height="400" 
-            src={`https://www.youtube.com/embed/${videoId}`}
-            title="YouTube video player" 
-            frameborder="0" 
+            src={`https://www.youtube.com/embed/${id}`}
+            title={video.snippet.title} 
+            frameBorder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen></iframe>
+            allowFullScreen></iframe>
             </div>
             <div className = "main-video__description">
                 <h3>{snippet.title}</h3>
@@ -24,14 +40,22 @@ export const VideoContainer = ({snippet, videoId}) => {
                         <span>1,158,375 views • Dec 9, 2016</span>
                     </div>
                     <div className = "row2__icons">
-                        <button className = "btn-icon">
-                            <ThumbUpAltIcon fontSize = "large" className = "grey-txt"/>
+                        <button className = "btn-icon" onClick = {() => addToLibraryHandler("Liked Videos")}>
+                            {
+                                getIdsInPlaylistCategory(myPlaylist.myLibrary, "Liked Videos").includes(id)  ?
+                                <ThumbUpAltIcon fontSize = "large" color = "primary"/> :
+                                <ThumbUpAltIcon fontSize = "large" className = "grey-txt"/>
+                            }
                         </button>
                         <button className = "btn-icon">
                             <PlaylistAddRoundedIcon fontSize = "large" className = "grey-txt"/>
                         </button>
-                        <button className = "btn-icon">
-                            <BookmarkBorderIcon fontSize = "large" className = "grey-txt"/>
+                        <button className = "btn-icon" onClick = {() => addToLibraryHandler("Saved Videos")}>
+                            {
+                                getIdsInPlaylistCategory(myPlaylist.myLibrary, "Saved Videos").includes(id)  ?
+                                <BookmarkIcon fontSize = "large" color = "primary"/> :
+                                <BookmarkBorderIcon fontSize = "large" className = "grey-txt"/>
+                            }
                         </button>
                     </div>
                 </div>

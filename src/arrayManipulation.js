@@ -25,8 +25,7 @@ const videoAlreadyExists = (libraryObject,video) =>{
     return videoIds.includes(video.id);
 }
 
-export const addNewItemToLibrary = (array,library,video) => {
-
+export const addNewCategoryToLibrary = (array,library,video) => {
     const itemInMyLibrary = array.find(item => item.name === library.name)
     if(itemInMyLibrary && itemInMyLibrary.checked && !videoAlreadyExists(itemInMyLibrary,video)){
         return array.map(item => {
@@ -47,3 +46,22 @@ export const addNewItemToLibrary = (array,library,video) => {
     return array;
     
 } 
+
+export const addVideoToACategory = (library, categoryName, video) => {
+    return library.map(category => {
+        if(category.name === categoryName){
+            return {...category, videoList:[video,...category.videoList]}
+        }
+        return category
+    })
+}
+
+export const removeVideoFromACategory = (library,category,videoId) => {
+    return library.map( item => {
+        if(item.name === category){
+            // item.videoList = item.videoList.filter(video => video.id === videoId)
+            return {...item, videoList:item.videoList.filter(video => video.id !== videoId)}
+        }
+        return item;
+    })
+}
