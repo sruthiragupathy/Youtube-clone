@@ -41,7 +41,6 @@ export const VideoCard = ({video}) => {
         </div>
        
         </div>
-        {videoLibrary.showModal === id && <Modal video = {video}/>}
     </>
 
 }

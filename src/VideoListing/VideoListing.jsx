@@ -16,11 +16,16 @@ export const VideoListing = () => {
         <SideBar/>
         <div className = "videoListing-grid">
         {videoLibrary.videoList.map(video => {
-            return <Link to = {`/video/${video.id}`}>
+            return <div>
+            <Link to = {`/video/${video.id}`}>
                 <VideoCard video = {video} onClick = {() => console.log("hi")} />
             </Link>
+            {videoLibrary.showModal === video.id && <Modal video = {video}/>}
+
+            </div>
         })}
         </div>
+
         </>
         
     )

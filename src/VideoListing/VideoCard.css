@@ -2,7 +2,7 @@
   width: 100%;
   /* cursor: pointer; */
   transition: all 0.2s ease-in-out;
-  /* z-index: 4; */
+  z-index: 4;
 }
 
 .card__img {
@@ -55,9 +55,9 @@
   text-align: center;
 }
 
-.video-card__description .btn-icon:hover {
+/* .video-card__description .btn-icon:hover {
   background: var(--light-grey1);
-}
+} */
 
 .fa-ellipsis-v {
   font-size: 1.25rem;

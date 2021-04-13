@@ -23,7 +23,9 @@ export const Modal = ({video}) => {
         myPlaylistDispatch({type:"SET_ALL_CHECKED_TO_FALSE"})
 
     }
-    const checkboxHandler = (library,video) => {
+    const checkboxHandler = (e,library,video) => {
+        // e.preventDefault();  
+        e.stopPropagation();
         myPlaylistDispatch({type:"TOGGLE_CHECKED",payload:library})
         myPlaylistDispatch({type:"ADD_TO_LIBRARY",payload:library,value:video})
     }
@@ -72,7 +74,7 @@ export const Modal = ({video}) => {
                             checked = {library.checked} 
                             className = "checkbox"
                             name = {library.name}
-                            onChange = {() => (checkboxHandler(library,video))}/>
+                            onChange = {(e) => (checkboxHandler(e,library,video))}/>
                             <label htmlFor = {library}>{library.name}</label>
                         </div>
                     

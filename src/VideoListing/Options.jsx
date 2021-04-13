@@ -7,7 +7,8 @@ import "./Options.css"
 export const Options = ({showOptions,video}) => {
     const {videoLibrary,videoLibraryDispatch} = useVideoList();
     const {myPlaylist,myPlaylistDispatch} = useMyPlaylist();
-    const closeInOptionsHandler = () => {
+    const closeInOptionsHandler = (e) => {
+        e.preventDefault();
         videoLibraryDispatch({type:"SET_SHOW_OPTIONS",payload:"0"})
     }
     const saveToWatchLaterHandler = (e) => {
