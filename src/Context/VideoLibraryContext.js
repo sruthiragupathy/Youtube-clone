@@ -9,7 +9,11 @@ export const VideoLibraryProvider = ({children}) => {
         videoList:[],
         showOptions:"",
         showModal : "",
-        overlay:false
+        overlay:false,
+        toast : {
+            value: false,
+            message: ""
+        },
     })
     return (
         <VideoLibraryContext.Provider value = {{videoLibrary,videoLibraryDispatch}}>

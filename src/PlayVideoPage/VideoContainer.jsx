@@ -5,20 +5,25 @@ import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import { getIdsInPlaylistCategory } from "../utils/utils";
 import { useMyPlaylist } from "../Context/MyPlaylistContext";
+import { useVideoList } from "../Context/VideoLibraryContext";
+import { Toast } from "../Toast/Toast";
 
 
 export const VideoContainer = ({video}) => {
-    const {snippet, id} = video;
-    const {myPlaylist, myPlaylistDispatch} = useMyPlaylist();
+    const { snippet, id } = video;
+    const { myPlaylist, myPlaylistDispatch } = useMyPlaylist();
+    const { videoLibrary,videoLibraryDispatch } = useVideoList();
 
     const addToLibraryHandler = (playlistCategory) => 
     {
         console.log(getIdsInPlaylistCategory(myPlaylist.myLibrary, playlistCategory).includes(id))
         if(getIdsInPlaylistCategory(myPlaylist.myLibrary, playlistCategory).includes(id)){
             myPlaylistDispatch({type:"REMOVE_VIDEO_FROM_LIBRARY",payload:playlistCategory,value:video.id})
+            videoLibraryDispatch({ type:"TOGGLE_TOAST", payload: `1 video removed from ${playlistCategory}` })
         }
         else{
             myPlaylistDispatch({type:"ADD_VIDEO_TO_LIBRARY",payload:playlistCategory,value:video})
+            videoLibraryDispatch({ type:"TOGGLE_TOAST", payload: `1 video added to ${playlistCategory}` })
         }
     }
     return (
@@ -67,6 +72,7 @@ export const VideoContainer = ({video}) => {
                 </div>
             
             </div>
+            { videoLibrary.toast.value && <Toast/> }
         </div>
     )
 }

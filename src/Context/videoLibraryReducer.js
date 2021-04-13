@@ -8,6 +8,13 @@ export const videoLibraryReducer = (videoLibrary,{type,payload}) => {
                 return {...videoLibrary,showModal:payload} 
         case "SET_OVERLAY":
             return {...videoLibrary,overlay:!videoLibrary.overlay}
+        case "TOGGLE_TOAST":
+            return {
+                    ...videoLibrary, toast: {
+                        value: !videoLibrary.toast.value,
+                        message: payload
+                    }
+            }
         default:
             return videoLibrary;
     }
