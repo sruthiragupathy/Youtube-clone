@@ -7,6 +7,7 @@ import { getIdsInPlaylistCategory } from "../utils/utils";
 import { useMyPlaylist } from "../Context/MyPlaylistContext";
 import { useVideoList } from "../Context/VideoLibraryContext";
 import { Toast } from "../Toast/Toast";
+import { Modal } from "../Modal/Modal";
 
 
 export const VideoContainer = ({video}) => {
@@ -16,7 +17,6 @@ export const VideoContainer = ({video}) => {
 
     const addToLibraryHandler = (playlistCategory) => 
     {
-        console.log(getIdsInPlaylistCategory(myPlaylist.myLibrary, playlistCategory).includes(id))
         if(getIdsInPlaylistCategory(myPlaylist.myLibrary, playlistCategory).includes(id)){
             myPlaylistDispatch({type:"REMOVE_VIDEO_FROM_LIBRARY",payload:playlistCategory,value:video.id})
             videoLibraryDispatch({ type:"TOGGLE_TOAST", payload: `1 video removed from ${playlistCategory}` })
@@ -25,6 +25,11 @@ export const VideoContainer = ({video}) => {
             myPlaylistDispatch({type:"ADD_VIDEO_TO_LIBRARY",payload:playlistCategory,value:video})
             videoLibraryDispatch({ type:"TOGGLE_TOAST", payload: `1 video added to ${playlistCategory}` })
         }
+    }
+
+    const saveToPlaylistHandler = (e) => {
+        e.preventDefault();
+        videoLibraryDispatch({type:"SET_SHOW_MODAL",payload:video.id})
     }
     return (
         <div className = "main-video__container">
@@ -52,7 +57,7 @@ export const VideoContainer = ({video}) => {
                                 <ThumbUpAltIcon fontSize = "large" className = "grey-txt"/>
                             }
                         </button>
-                        <button className = "btn-icon">
+                        <button className = "btn-icon" onClick = {saveToPlaylistHandler}>
                             <PlaylistAddRoundedIcon fontSize = "large" className = "grey-txt"/>
                         </button>
                         <button className = "btn-icon" onClick = {() => addToLibraryHandler("Saved Videos")}>
@@ -73,6 +78,7 @@ export const VideoContainer = ({video}) => {
             
             </div>
             { videoLibrary.toast.value && <Toast/> }
+            { videoLibrary.showModal === id && <Modal video = {video}/> }
         </div>
     )
 }
