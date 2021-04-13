@@ -49,8 +49,8 @@
 
 .video-card__description .btn-icon {
   /* padding-right: 0.5rem; */
-  width: 3.5rem;
-  height: 1.5rem;
+  width: 2.5rem;
+  height: 1.75rem;
   color: var(--midgrey);
   text-align: center;
 }

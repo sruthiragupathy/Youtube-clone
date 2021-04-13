@@ -34,7 +34,7 @@ export const VideoCard = ({video}) => {
                 <div className = "grey-txt">{channelTitle} <i className = "fa fa-check-circle"></i></div>
                 <small className = "grey-txt">2.4M Views · 1 day ago</small>
             </div>
-            <button className = "btn-icon br trash" onClick = {handleMoreOptions}>
+            <button className = "btn-icon br" onClick = {handleMoreOptions}>
                 <i className = "fa fa-ellipsis-v"></i>
             </button>
             <Options showOptions = {videoLibrary.showOptions === id} video = {video}/>
