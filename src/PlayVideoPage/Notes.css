@@ -38,6 +38,7 @@
   justify-content: space-between;
   align-items: flex-start;
   border: 1px solid var(--light-grey1);
+  background-color: var(--light-grey);
   margin-bottom: 1rem;
 }
 .flex1 {

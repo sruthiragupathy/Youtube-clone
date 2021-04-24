@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export const addNewItemToExistingArray = (array,itemToAdd) => {
     if(!array.find(item => item.id === itemToAdd.id))
     {
@@ -110,8 +112,18 @@ const formatTime = (time) => {
 export const addNoteToVideo = (videoList, videoId, note) => {
     return videoList.map(video => {
             if(video.id === videoId){
-                return {...video, notes:[...video.notes, {note: note.note, time: formatTime(note.time)}]}
+                return {...video, notes:[...video.notes, {id: uuidv4(), note: note.note, time: formatTime(note.time)}]}
             }
             return video
         })
+}
+
+
+export const removeNoteFromVideo = (videoList, videoId, noteId) => {
+    return videoList.map(video => {
+        if(video.id === videoId) {
+            return {...video, notes:video.notes.filter( note => note.id !== noteId )}
+        }
+        return video;
+    })
 }

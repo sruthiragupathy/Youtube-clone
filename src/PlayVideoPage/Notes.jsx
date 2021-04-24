@@ -48,7 +48,7 @@ export const Notes = ({video, videoPlayerRef}) => {
         {
             videoLibrary.videoList.length!==0 && (getNotes(video.id).length?
             getNotes(video.id).map( note => {
-                return <div className = "note">
+                return <div className = "note" key = {note.id}>
                 <div className = "flex1">
                     <span>{note.note}</span>
                     <span className = "small-txt"><i className = "fa fa-clock-o"></i> {note.time}</span>
@@ -57,7 +57,7 @@ export const Notes = ({video, videoPlayerRef}) => {
                  <button className = "btn-transparent edit">
                     <EditIcon />
                 </button>
-                <button className = "btn-transparent delete-note">
+                <button className = "btn-transparent delete-note" onClick = {() => videoLibraryDispatch({ type:"DELETE_NOTE", payload:video.id, value: note.id })}>
                     <DeleteIcon  />
                 </button>
                 </div>
