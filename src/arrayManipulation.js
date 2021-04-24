@@ -127,3 +127,18 @@ export const removeNoteFromVideo = (videoList, videoId, noteId) => {
         return video;
     })
 }
+
+
+export const editNoteInVideo = (videoList, videoId, noteId, editNote) => {
+    return videoList.map(video => {
+        if(video.id === videoId) {
+            return {...video, notes: video.notes.map(note => {
+                if(note.id === noteId){
+                    return {...note, note: editNote }
+                }
+                return note
+            })}
+        }
+        return video;
+    })
+}
