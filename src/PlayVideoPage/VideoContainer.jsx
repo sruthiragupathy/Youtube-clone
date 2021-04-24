@@ -8,9 +8,9 @@ import { useMyPlaylist } from "../Context/MyPlaylistContext";
 import { useVideoList } from "../Context/VideoLibraryContext";
 import { Toast } from "../Toast/Toast";
 import { Modal } from "../Modal/Modal";
+import ReactPlayer from 'react-player'
 
-
-export const VideoContainer = ({video}) => {
+export const VideoContainer = ({video, videoPlayerRef}) => {
     const { snippet, id } = video;
     const { myPlaylist, myPlaylistDispatch } = useMyPlaylist();
     const { videoLibrary,videoLibraryDispatch } = useVideoList();
@@ -31,17 +31,31 @@ export const VideoContainer = ({video}) => {
         e.preventDefault();
         videoLibraryDispatch({type:"SET_SHOW_MODAL",payload:video.id})
     }
+    console.log("currentTime", videoPlayerRef)
+
+    const getCurrentTime = () => {
+    console.log(videoPlayerRef.current.getCurrentTime());
+    }
     return (
         <div className = "main-video__container">
             <div>
-            <iframe 
-            width="100%" 
-            height="400" 
-            src={`https://www.youtube.com/embed/${id}`}
-            title={video.snippet.title} 
-            frameBorder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowFullScreen></iframe>
+            <ReactPlayer
+                ref = {videoPlayerRef}
+                url = {`https://www.youtube.com/embed/${id}`}
+                config={{
+                    youtube: {
+                      playerVars: { showinfo: 1 }
+                    }
+                }}
+                controls
+                width='100%'
+                height='400px'
+                title={video.snippet.title} 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+                onStart={() => console.log('onStart')}
+                ></ReactPlayer>
             </div>
             <div className = "main-video__description">
                 <h3>{snippet.title}</h3>
@@ -75,8 +89,7 @@ export const VideoContainer = ({video}) => {
                     <div className = "bold-txt">{snippet.channelTitle}</div>
                     </div>
                 </div>
-            
-            </div>
+             </div>
             { videoLibrary.toast.value && <Toast/> }
             { videoLibrary.showModal === id && <Modal video = {video}/> }
         </div>

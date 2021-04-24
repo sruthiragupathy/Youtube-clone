@@ -26,7 +26,9 @@ export const StackedListTemplate = () => {
                     {
                        getCurrentLibraryObject(libraryName).videoList.map(video => {
                             return (
-                                <HorizontalCard key = {video.id} video = {video} />
+                                <Link to = {`/video/${video.id}`}>
+                                <HorizontalCard key = {video.id} video = {video} libraryName = {libraryName}/>
+                                </Link>
                             )
                         })
                     }

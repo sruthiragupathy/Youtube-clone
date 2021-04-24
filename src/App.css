@@ -37,6 +37,25 @@
   color: var(--purple);
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--light-grey);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--light-grey1);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lightgrey2);
+}
+
 @media screen and (min-width: 900px) {
   .margin-left-4 {
     margin-left: 4rem;

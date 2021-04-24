@@ -2,13 +2,14 @@ import { useMyPlaylist } from "../Context/MyPlaylistContext";
 import "./HorizontalCard.css"
 
 
-export const HorizontalCard = ({video}) => {
+export const HorizontalCard = ({video, libraryName}) => {
     const {snippet} = video;
     const {title,channelTitle,thumbnails} = snippet;
     const {myPlaylistDispatch} = useMyPlaylist();
 
-    const deleteFromPlaylist = () => {
-        console.log("delete")
+    const deleteFromPlaylist = (e) => {
+        e.preventDefault();
+        myPlaylistDispatch({type:"REMOVE_VIDEO_FROM_LIBRARY",payload:libraryName, value: video.id})
     }
     return (
         

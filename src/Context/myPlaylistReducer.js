@@ -3,6 +3,7 @@ import {v4 as uuidv4} from "uuid";
 
 
 export const myPlaylistReducer = (myPlaylist,{type,payload,value}) => {
+    console.log(type, payload, value)
     switch(type){
         case "ADD_TO_WATCH_LATER":
             return {...myPlaylist,watchLaterList:addNewItemToExistingArray(myPlaylist.watchLaterList,payload)}

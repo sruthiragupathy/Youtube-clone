@@ -57,6 +57,13 @@ export const addVideoToACategory = (library, categoryName, video) => {
 }
 
 export const removeVideoFromACategory = (library,category,videoId) => {
+    console.log(library.map( item => {
+        if(item.name === category){
+            // item.videoList = item.videoList.filter(video => video.id === videoId)
+            return {...item, videoList:item.videoList.filter(video => video.id !== videoId)}
+        }
+        return item;
+    }))
     return library.map( item => {
         if(item.name === category){
             // item.videoList = item.videoList.filter(video => video.id === videoId)
@@ -64,4 +71,47 @@ export const removeVideoFromACategory = (library,category,videoId) => {
         }
         return item;
     })
+}
+
+const formatTime = (time) => {
+    console.log(time, typeof time);
+    let timeString = ""
+    let quotient = Math.floor(time/3600)
+    let remainder = Math.floor(time%3600)
+    
+    if(quotient!== 0){
+        if(quotient<9){
+            timeString+=`0${quotient}:`
+        }
+        else{
+            timeString+=`${quotient}:`
+        }
+    }
+    quotient = Math.floor(remainder/60);
+    remainder = Math.floor(remainder % 60);
+    if(quotient<9){
+        timeString+=`0${quotient}:`
+    }
+    else{
+        timeString+=`${quotient}:`
+
+    }
+    if(remainder < 9){
+        timeString+=`0${remainder}`
+    }
+    else{
+        timeString+=`${remainder}`
+
+    }
+    console.log({timeString})
+    return timeString;
+}
+
+export const addNoteToVideo = (videoList, videoId, note) => {
+    return videoList.map(video => {
+            if(video.id === videoId){
+                return {...video, notes:[...video.notes, {note: note.note, time: formatTime(note.time)}]}
+            }
+            return video
+        })
 }

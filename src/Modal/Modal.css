@@ -47,7 +47,7 @@
   background: transparent;
   border: 0;
   font-size: 1rem;
-  color: var(--darkred);
+  color: var(--purple);
 }
 
 .checkbox {
@@ -78,7 +78,7 @@
   background: transparent;
   border: none;
   font-weight: 1000;
-  color: var(--darkred);
+  color: var(--purple);
   margin-top: 0.75rem;
 }
 
@@ -90,5 +90,5 @@
 .error {
   font-size: 0.65rem;
   text-align: left;
-  color: var(--darkred);
+  color: var(--purple);
 }

@@ -6,7 +6,7 @@
   padding: 1rem;
   background: var(--darkgrey);
   color: var(--light-grey);
-  border-bottom: 7px solid var(--darkred);
+  border-bottom: 7px solid var(--purple);
   text-align: center;
   z-index: 2;
   visibility: hidden;
