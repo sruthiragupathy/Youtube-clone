@@ -53,10 +53,6 @@
   font-size: smaller;
 }
 
-.note .fa-trash-o,
-.note .fa-edit {
-  font-size: 1.25rem;
-}
 .btn-transparent {
   background: transparent;
   border: 0;
@@ -64,8 +60,15 @@
 
 .edit {
   color: var(--purple);
+  transition: all 100ms ease-in-out;
 }
 
 .delete-note {
   color: var(--darkred);
+  transition: all 100ms ease-in-out;
+}
+
+.edit:hover,
+.delete-note:hover {
+  transform: scale(1.1);
 }
