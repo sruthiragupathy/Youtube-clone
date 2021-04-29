@@ -6,15 +6,18 @@ import App from "./App";
 import { VideoLibraryProvider } from "./Context/VideoLibraryContext";
 import { MyPlayListProvider } from "./Context/MyPlaylistContext";
 import { BrowserRouter as Router } from "react-router-dom";
+import { AuthProvider } from "./Context/AuthContext";
 // setupMockServer()
 ReactDOM.render(
   <React.StrictMode>
     <Router>
+      <AuthProvider>
       <VideoLibraryProvider>
         <MyPlayListProvider>
           <App />
         </MyPlayListProvider>
       </VideoLibraryProvider>
+      </AuthProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")
