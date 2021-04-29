@@ -11,7 +11,6 @@ import { Modal } from "../Modal/Modal";
 import ReactPlayer from 'react-player'
 
 export const VideoContainer = ({video, videoPlayerRef}) => {
-    console.log({video})
     const {_id, videoId, title,  channelTitle, channelProfile, viewCount} = video;
     const { myPlaylist, myPlaylistDispatch } = useMyPlaylist();
     const { videoLibrary,videoLibraryDispatch } = useVideoList();
@@ -50,7 +49,7 @@ export const VideoContainer = ({video, videoPlayerRef}) => {
                 }}
                 controls
                 width='100%'
-                height='375px'
+                height='400px'
                 title={title} 
                 frameBorder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
