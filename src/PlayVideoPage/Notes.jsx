@@ -35,7 +35,7 @@ export const Notes = ({video, videoPlayerRef}) => {
 
     const getNotes = (videoId) => {
         // console.log(videoLibrary.videoList.find(item => item.id === videoId))
-        return videoLibrary.videoList.find(item => item.id === videoId).notes
+        return videoLibrary.videoList.find(item => item._id === videoId).notes
     }
     const editHandler = (note) => {
         setNote(prev => note.note);
@@ -58,9 +58,9 @@ export const Notes = ({video, videoPlayerRef}) => {
                 <AddIcon />
             </button>
         </div>
-        {
-            videoLibrary.videoList.length!==0 && (getNotes(video.id).length?
-            getNotes(video.id).map( note => {
+        {/* {
+            videoLibrary.videoList.length!==0 && (getNotes(video.id) ?
+            getNotes(video._id).map( note => {
                 return <div className = "note" key = {note.id}  id = {note.id}>
                 <div className = "flex1">
                     <span>{note.note}</span>
@@ -79,7 +79,7 @@ export const Notes = ({video, videoPlayerRef}) => {
              :
             null) 
 
-        }
+        } */}
 
     </div>
 }

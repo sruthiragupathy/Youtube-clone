@@ -11,14 +11,15 @@ import { Modal } from "../Modal/Modal";
 import ReactPlayer from 'react-player'
 
 export const VideoContainer = ({video, videoPlayerRef}) => {
-    const { snippet, id } = video;
+    console.log({video})
+    const {_id, videoId, title,  channelTitle, channelProfile, viewCount} = video;
     const { myPlaylist, myPlaylistDispatch } = useMyPlaylist();
     const { videoLibrary,videoLibraryDispatch } = useVideoList();
 
     const addToLibraryHandler = (playlistCategory) => 
     {
-        if(getIdsInPlaylistCategory(myPlaylist.myLibrary, playlistCategory).includes(id)){
-            myPlaylistDispatch({type:"REMOVE_VIDEO_FROM_LIBRARY",payload:playlistCategory,value:video.id})
+        if(getIdsInPlaylistCategory(myPlaylist.myLibrary, playlistCategory).includes(_id)){
+            myPlaylistDispatch({type:"REMOVE_VIDEO_FROM_LIBRARY",payload:playlistCategory,value:video._id})
             videoLibraryDispatch({ type:"TOGGLE_TOAST", payload: `1 video removed from ${playlistCategory}` })
         }
         else{
@@ -29,19 +30,19 @@ export const VideoContainer = ({video, videoPlayerRef}) => {
 
     const saveToPlaylistHandler = (e) => {
         e.preventDefault();
-        videoLibraryDispatch({type:"SET_SHOW_MODAL",payload:video.id})
+        videoLibraryDispatch({type:"SET_SHOW_MODAL",payload:video._id})
     }
     console.log("currentTime", videoPlayerRef)
 
-    const getCurrentTime = () => {
-    console.log(videoPlayerRef.current.getCurrentTime());
-    }
+    // const getCurrentTime = () => {
+    // console.log(videoPlayerRef.current.getCurrentTime());
+    // }
     return (
         <div className = "main-video__container">
             <div>
             <ReactPlayer
                 ref = {videoPlayerRef}
-                url = {`https://www.youtube.com/embed/${id}`}
+                url = {`https://www.youtube.com/embed/${videoId}`}
                 config={{
                     youtube: {
                       playerVars: { showinfo: 1 }
@@ -49,8 +50,8 @@ export const VideoContainer = ({video, videoPlayerRef}) => {
                 }}
                 controls
                 width='100%'
-                height='400px'
-                title={video.snippet.title} 
+                height='375px'
+                title={title} 
                 frameBorder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowFullScreen
@@ -58,15 +59,15 @@ export const VideoContainer = ({video, videoPlayerRef}) => {
                 ></ReactPlayer>
             </div>
             <div className = "main-video__description">
-                <h3>{snippet.title}</h3>
+                <h3>{title}</h3>
                 <div className = "video-description__row2 grey-txt">
                     <div className = "grey-txt">
-                        <span>1,158,375 views • Dec 9, 2016</span>
+                        <span>{viewCount} • Dec 9, 2016</span>
                     </div>
                     <div className = "row2__icons">
                         <button className = "btn-icon" onClick = {() => addToLibraryHandler("Liked Videos")}>
                             {
-                                getIdsInPlaylistCategory(myPlaylist.myLibrary, "Liked Videos").includes(id)  ?
+                                getIdsInPlaylistCategory(myPlaylist.myLibrary, "Liked Videos").includes(_id)  ?
                                 <ThumbUpAltIcon fontSize = "large" color = "primary"/> :
                                 <ThumbUpAltIcon fontSize = "large" className = "grey-txt"/>
                             }
@@ -76,7 +77,7 @@ export const VideoContainer = ({video, videoPlayerRef}) => {
                         </button>
                         <button className = "btn-icon" onClick = {() => addToLibraryHandler("Saved Videos")}>
                             {
-                                getIdsInPlaylistCategory(myPlaylist.myLibrary, "Saved Videos").includes(id)  ?
+                                getIdsInPlaylistCategory(myPlaylist.myLibrary, "Saved Videos").includes(_id)  ?
                                 <BookmarkIcon fontSize = "large" color = "primary"/> :
                                 <BookmarkBorderIcon fontSize = "large" className = "grey-txt"/>
                             }
@@ -84,14 +85,14 @@ export const VideoContainer = ({video, videoPlayerRef}) => {
                     </div>
                 </div>
                 <div className = "channel-description">
-                    <img src={snippet.imageURL} alt="" className = "video-card__profile-pic"/>
+                    <img src={channelProfile} alt="" className = "video-card__profile-pic"/>
                     <div className = "margin-left-1">
-                    <div className = "bold-txt">{snippet.channelTitle}</div>
+                    <div className = "bold-txt">{channelTitle}</div>
                     </div>
                 </div>
              </div>
             { videoLibrary.toast.value && <Toast/> }
-            { videoLibrary.showModal === id && <Modal video = {video}/> }
+            { videoLibrary.showModal === _id && <Modal video = {video}/> }
         </div>
     )
 }
