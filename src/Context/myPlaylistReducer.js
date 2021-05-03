@@ -11,22 +11,19 @@ import { v4 as uuidv4 } from "uuid";
 export const myPlaylistReducer = (myPlaylist, { type, payload, value }) => {
   console.log(type, payload, value);
   switch (type) {
-    case "ADD_TO_WATCH_LATER":
+    case "SET_LIBRARY":
       return {
-        ...myPlaylist,
-        watchLaterList: addNewItemToExistingArray(
-          myPlaylist.watchLaterList,
-          payload
-        ),
-      };
-    case "REMOVE_FROM_WATCH_LATER":
+        ...myPlaylist, myLibrary: payload
+      }
+    case "ADD_NEW_LIBRARY": 
       return {
-        ...myPlaylist,
-        watchLaterList: removeExistingItemFromArray(
-          myPlaylist.watchLaterList,
-          payload
-        ),
-      };
+        ...myPlaylist, myLibrary: [...myPlaylist.myLibrary, payload]
+      }
+    case "REMOVE_LIBRARY":
+      return {...myPlaylist, myLibrary: myPlaylist.myLibrary.filter(library => {
+        console.log({library})
+        return library._id!==payload
+      })}
     case "ADD_TO_LIBRARY":
       return {
         ...myPlaylist,
@@ -39,7 +36,7 @@ export const myPlaylistReducer = (myPlaylist, { type, payload, value }) => {
     case "ADD_VIDEO_TO_LIBRARY":
       return {
         ...myPlaylist,
-        myLibrary: addVideoToACategory(myPlaylist.myLibrary, payload, value),
+        myLibrary: addVideoToACategory(myPlaylist.myLibrary, payload),
       };
     case "REMOVE_VIDEO_FROM_LIBRARY":
       return {

@@ -1,7 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import { useLocation,useNavigate } from "react-router"
 import "./Login.css"
 import {useEffect, useState} from "react";
 import { useAuth } from "../Context/AuthContext";
+import { useVideoList } from "../Context/VideoLibraryContext";
 
 // import { useProduct } from "../Context/ProductContext";
 
@@ -11,7 +14,7 @@ export const Login = () => {
     const {auth, LoginUserWithCredentials} = useAuth();
     console.log({auth})
     const location= useLocation();
-    // const {dispatch} = useProduct();
+    const { videoLibrary, videoLibraryDispatch } = useVideoList();
     const [user, setUser] = useState({
         email: "",
         password: ""
@@ -34,7 +37,7 @@ export const Login = () => {
            let validationSuccess = true;
 
             if(!user.email){
-             setError(error => ({...error,email:"Please Enter a valid email"}))
+                
              validationSuccess = false;
 
              }
@@ -51,19 +54,19 @@ export const Login = () => {
             ...user,[e.target.name] : e.target.value
         })
     }
-    // const hideToast = () => {
-    //     setTimeout(() => {
-    //         dispatch({type:"TOGGLE_TOAST",payload:"", value: false});
-    //       }, 3000)
-    // }
+    const hideToast = () => {
+        setTimeout(() => {
+            videoLibraryDispatch({type:"TOGGLE_TOAST",payload:"", value: false});
+          }, 3000)
+    }
     const loginHandler = async () => {
         setErrorFromBackend("");
         setLoading(true);
         if(validateForm()){
             const response = await LoginUserWithCredentials(user,location.state?.from?location.state.from:"/");
             if(response?.success) {
-                // dispatch({type:"TOGGLE_TOAST",payload:"You have been logged in successfully, Happy Shopping", value: true});
-                // hideToast()
+                videoLibraryDispatch({type:"TOGGLE_TOAST",payload:"You have been logged in successfully, Happy Shopping", value: true});
+                hideToast()
             }
             if(!response?.success){
                 setErrorFromBackend(response.error)

@@ -1,21 +1,26 @@
+import axios from "axios";
 import { useMyPlaylist } from "../Context/MyPlaylistContext";
+import { BACKEND } from "../utils/api";
 import "./HorizontalCard.css"
 
 
-export const HorizontalCard = ({video, libraryName}) => {
-    const {snippet} = video;
-    const {title,channelTitle,thumbnails} = snippet;
+export const HorizontalCard = ({video, libraryName= "Watch Later",libraryId}) => {
+    const {_id, videoId, title,  channelTitle, channelProfile, viewCount} = video;
+    console.log({video})
     const {myPlaylistDispatch} = useMyPlaylist();
 
-    const deleteFromPlaylist = (e) => {
+    const deleteFromPlaylist = async (e) => {
         e.preventDefault();
-        myPlaylistDispatch({type:"REMOVE_VIDEO_FROM_LIBRARY",payload:libraryName, value: video.id})
+        console.log("delete");
+        const response = await axios.delete(`${BACKEND}/playlist/${libraryId}/${video._id}`)
+       console.log({response})
+       myPlaylistDispatch({type: "ADD_VIDEO_TO_LIBRARY", payload: response.data.response})
     }
     return (
         
         <div className = "list relative">
             <div className = "list__img">
-                <img src = {thumbnails.default.url} alt = {title}/>
+                <img src = {`https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`} alt = {title}/>
             </div>
             <div className = "list__details">
                 <div className = "details__title">{title}</div>

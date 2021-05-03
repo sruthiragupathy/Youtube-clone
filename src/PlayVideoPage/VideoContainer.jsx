@@ -3,29 +3,46 @@ import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import PlaylistAddRoundedIcon from '@material-ui/icons/PlaylistAddRounded';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
-import { getIdsInPlaylistCategory } from "../utils/utils";
+import { getIdOfAPlaylist, getIdsInPlaylistCategory } from "../utils/utils";
 import { useMyPlaylist } from "../Context/MyPlaylistContext";
 import { useVideoList } from "../Context/VideoLibraryContext";
 import { Toast } from "../Toast/Toast";
 import { Modal } from "../Modal/Modal";
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player';
+import axios from "axios";
+import { BACKEND } from "../utils/api";
+
 
 export const VideoContainer = ({video, videoPlayerRef}) => {
     const {_id, videoId, title,  channelTitle, channelProfile, viewCount} = video;
     const { myPlaylist, myPlaylistDispatch } = useMyPlaylist();
     const { videoLibrary,videoLibraryDispatch } = useVideoList();
 
-    const addToLibraryHandler = (playlistCategory) => 
-    {
-        if(getIdsInPlaylistCategory(myPlaylist.myLibrary, playlistCategory).includes(_id)){
-            myPlaylistDispatch({type:"REMOVE_VIDEO_FROM_LIBRARY",payload:playlistCategory,value:video._id})
-            videoLibraryDispatch({ type:"TOGGLE_TOAST", payload: `1 video removed from ${playlistCategory}` })
+    const isVideoInLibrary = (videoId, libraryId) => {
+        const currentLibrary = myPlaylist.myLibrary.find( library => library._id === libraryId);
+        const videoIdsInCurrentLibrary = currentLibrary.videos.map(video => video._id)
+        return videoIdsInCurrentLibrary.includes(videoId)
+      }
+
+    const likedPlaylistId = getIdOfAPlaylist(myPlaylist.myLibrary, "Liked Videos")
+    const savedPlaylistId = getIdOfAPlaylist(myPlaylist.myLibrary, "Saved Videos")
+    console.log({likedPlaylistId, savedPlaylistId})
+
+
+
+    const addToLibraryHandler = async (playlistCategory, libraryId, videoId) => {
+        if(isVideoInLibrary(videoId,libraryId)) {
+          const  response  = await axios.delete(`${BACKEND}/playlist/${libraryId}/${videoId}`);
+          console.log( response.data.response.videos);
+          myPlaylistDispatch({type: "ADD_VIDEO_TO_LIBRARY", payload: response.data.response});
+          videoLibraryDispatch({ type:"TOGGLE_TOAST", payload: `1 video removed from ${playlistCategory}` })
         }
-        else{
-            myPlaylistDispatch({type:"ADD_VIDEO_TO_LIBRARY",payload:playlistCategory,value:video})
-            videoLibraryDispatch({ type:"TOGGLE_TOAST", payload: `1 video added to ${playlistCategory}` })
+        else {
+          const  response  = await axios.post(`${BACKEND}/playlist/${libraryId}/${videoId}`);
+          myPlaylistDispatch({type: "ADD_VIDEO_TO_LIBRARY", payload: response.data.response})
+          videoLibraryDispatch({ type:"TOGGLE_TOAST", payload: `1 video added to ${playlistCategory}` })
         }
-    }
+      };
 
     const saveToPlaylistHandler = (e) => {
         e.preventDefault();
@@ -33,9 +50,6 @@ export const VideoContainer = ({video, videoPlayerRef}) => {
     }
     console.log("currentTime", videoPlayerRef)
 
-    // const getCurrentTime = () => {
-    // console.log(videoPlayerRef.current.getCurrentTime());
-    // }
     return (
         <div className = "main-video__container">
             <div>
@@ -64,7 +78,7 @@ export const VideoContainer = ({video, videoPlayerRef}) => {
                         <span>{viewCount} • Dec 9, 2016</span>
                     </div>
                     <div className = "row2__icons">
-                        <button className = "btn-icon" onClick = {() => addToLibraryHandler("Liked Videos")}>
+                        <button className = "btn-icon" onClick = {() => addToLibraryHandler("Liked Videos",likedPlaylistId, _id)}>
                             {
                                 getIdsInPlaylistCategory(myPlaylist.myLibrary, "Liked Videos").includes(_id)  ?
                                 <ThumbUpAltIcon fontSize = "large" color = "primary"/> :
@@ -74,7 +88,7 @@ export const VideoContainer = ({video, videoPlayerRef}) => {
                         <button className = "btn-icon" onClick = {saveToPlaylistHandler}>
                             <PlaylistAddRoundedIcon fontSize = "large" className = "grey-txt"/>
                         </button>
-                        <button className = "btn-icon" onClick = {() => addToLibraryHandler("Saved Videos")}>
+                        <button className = "btn-icon" onClick = {() => addToLibraryHandler("Saved Videos", savedPlaylistId, _id)}>
                             {
                                 getIdsInPlaylistCategory(myPlaylist.myLibrary, "Saved Videos").includes(_id)  ?
                                 <BookmarkIcon fontSize = "large" color = "primary"/> :

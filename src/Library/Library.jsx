@@ -6,6 +6,7 @@ import { SideBar } from "../Navbar/SideBar";
 
 export const Library = () => {
     const {myPlaylist} = useMyPlaylist();
+    console.log(myPlaylist.myLibrary)
     return  <>
     <SideBar/>
     <div className = "flex-center margin-left-4">
@@ -15,10 +16,10 @@ export const Library = () => {
                     <div className = "heading">My Library</div>
 
                     {
-                        myPlaylist.myLibrary.map(library => {
-                            console.log(library["videoList"].length)
+                        myPlaylist?.myLibrary?.map(library => {
+                            // console.log(library["videoList"].length)
                             return (
-                                library["videoList"].length ? <LibraryCard key = {library.id} library = {library} /> : null
+                                library["videos"].length ? <LibraryCard key = {library._id} library = {library} /> : null
                             )
                         })
                     }

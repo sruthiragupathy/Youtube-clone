@@ -38,7 +38,7 @@ export const AuthProvider = ({children}) => {
         user: {}
     });
     useEffect(() => {
-        const userCredentials = JSON.parse(localStorage?.getItem("usercredentials"))
+        const userCredentials = JSON.parse(localStorage?.getItem("logincredentials"))
         // console.log(userCredentials.userName,userCredentials.isUserLoggedIn);
         userCredentials?.isUserLoggedIn && 
         authDispatch({type:"SET_ISLOGGEDIN",payload:userCredentials.isUserLoggedIn})
@@ -51,7 +51,7 @@ export const AuthProvider = ({children}) => {
  
     const LoginUserWithCredentials = async(user,pathTo) => {
         try{
-            const response = await RestApiCalls("POST", `${BACKEND}/login`, user)
+            const response = await RestApiCalls("POST", `https://amaraapi.herokuapp.com/api/login`, user)
             if(response?.success){
             localStorage.setItem("logincredentials",
             JSON.stringify({isUserLoggedIn:true, userName: getNameFromEmail(user.email), _id: response.response[0]._id }))

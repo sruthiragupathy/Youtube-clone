@@ -49,12 +49,12 @@ export const addNewCategoryToLibrary = (array,library,video) => {
     
 } 
 
-export const addVideoToACategory = (library, categoryName, video) => {
-    return library.map(category => {
-        if(category.name === categoryName){
-            return {...category, videoList:[video,...category.videoList]}
+export const addVideoToACategory = (library, currentLibrary) => {
+    return library.map(lib => {
+        if(lib._id === currentLibrary._id){
+            return currentLibrary
         }
-        return category
+        return lib;
     })
 }
 

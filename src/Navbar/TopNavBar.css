@@ -1,14 +1,15 @@
 .top-navbar {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  right: 0;
-  height: 2rem;
-  background: #fff;
-  z-index: 2;
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem;
+	padding-right: 2rem;
+	align-items: center;
+	position: sticky;
+	top: 0;
+	right: 0;
+	height: 2rem;
+	background: #fff;
+	z-index: 2;
 }
 
 /* @media only screen and (min-width: 900px) {
@@ -18,29 +19,49 @@
 } */
 
 .fa-youtube-square {
-  color: var(--purple);
-  margin-right: 0.5rem;
+	color: var(--purple);
+	margin-right: 0.5rem;
 }
 
 .youtube__title {
-  font-weight: 1000;
-  font-size: 1.25rem;
+	font-weight: 1000;
+	font-size: 1.25rem;
 }
 
 .top-navbar__form {
-  display: flex;
+	display: flex;
 }
 
 .form__input {
-  padding: 0.75rem 0.5rem;
-  width: 40vw;
+	padding: 0.75rem 0.5rem;
+	width: 40vw;
 }
 
 .form__btn {
-  padding: 0 0.5rem;
+	padding: 0 0.5rem;
 }
 
 .fa-search {
-  font-size: 1.25rem;
-  /* color: var(--midgrey); */
+	font-size: 1.25rem;
+	/* color: var(--midgrey); */
+}
+
+.profile-card {
+	position: fixed;
+	top: 4rem;
+	background: #fff;
+	right: 1rem;
+	width: 8rem;
+	padding: 0.25rem;
+	z-index: 5;
+}
+
+.profile-card li,
+.profile-card a {
+	padding: 0.5rem;
+	display: block;
+}
+
+.profile-card button {
+	width: 100%;
 }
