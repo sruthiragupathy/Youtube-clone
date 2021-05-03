@@ -14,13 +14,14 @@
 	import {Login} from './Login/Login';
 	import {SignUp} from './Login/SignUp';
 	import { useAuth } from './Context/AuthContext'
+import axios from 'axios'
 
 	function App() {
 		const { videoLibrary, videoLibraryDispatch } = useVideoList()
 		const { myPlaylist, myPlaylistDispatch } = useMyPlaylist()
 		const [loading, setLoading] = useState(true)
 		const { auth } = useAuth();
-		console.log({myPlaylist})
+		console.log({videoLibrary})
 
 		const fetchPlaylist = async () => {
 			console.log(auth)
@@ -30,7 +31,9 @@
 		}
 
 		const fetchNotes = async () => {
-
+			const response = await axios.get(`${BACKEND}/${auth.user._id}/notes`);
+			console.log({response})
+			videoLibraryDispatch({type:"SET_NOTES", payload: response.data.response})
 		}
 
 		useEffect(() => {

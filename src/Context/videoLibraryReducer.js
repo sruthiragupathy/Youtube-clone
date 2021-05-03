@@ -10,6 +10,8 @@ export const videoLibraryReducer = (
   switch (type) {
     case "LOAD_VIDEOLIST":
       return { ...videoLibrary, videoList: payload };
+    case "SET_NOTES":
+      return {...videoLibrary, notes: payload}
     case "ADD_NOTE":
       return {
         ...videoLibrary,

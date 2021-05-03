@@ -13,6 +13,7 @@ export const VideoLibraryProvider = ({ children }) => {
       value: false,
       message: "",
     },
+    notes:[]
   });
   return (
     <VideoLibraryContext.Provider

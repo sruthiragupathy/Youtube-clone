@@ -75,7 +75,7 @@ export const removeVideoFromACategory = (library,category,videoId) => {
     })
 }
 
-const formatTime = (time) => {
+export const formatTime = (time) => {
     console.log(time, typeof time);
     let timeString = ""
     let quotient = Math.floor(time/3600)
