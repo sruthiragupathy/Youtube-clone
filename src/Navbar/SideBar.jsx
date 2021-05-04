@@ -2,13 +2,11 @@ import "./SideBar.css";
 import {NavLink} from "react-router-dom";
 import { useMyPlaylist } from "../Context/MyPlaylistContext";
 import { getIdOfAPlaylist } from "../utils/utils";
-import { WatchLater } from "../Watch Later/WatchLater";
+
 
 export const SideBar = () => {
     const { myPlaylist } = useMyPlaylist();
-    console.log({myPlaylist})
-    // const watchLaterPlaylistId = getIdOfAPlaylist(myPlaylist.myLibrary, "Watch Later")
-    // console.log({watchLaterPlaylistId})
+
     return (
     <div className = "sidebar">
             <NavLink to = "/" end className = "sidebar__nav" activeClassName = "selected">

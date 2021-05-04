@@ -1,7 +1,6 @@
 
 import { createContext, useContext, useEffect, useReducer } from "react";
 import {useNavigate} from "react-router-dom";
-import { BACKEND } from "../utils/api";
 import { RestApiCalls } from "../utils/callRestApi";
 
 

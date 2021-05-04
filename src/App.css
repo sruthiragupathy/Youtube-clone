@@ -12,6 +12,10 @@
 	color: var(--midgrey);
 }
 
+.width-100 {
+	width: 100%;
+}
+
 .heading {
 	/* width: 100%; */
 	font-size: 1.5rem;
@@ -65,12 +69,12 @@
 	font-family: 'Pacifico', cursive;
 	background: transparent;
 	border: none;
-	font-size: 1.5rem;
+	font-size: 1.15rem;
 }
 
 .loader {
 	position: absolute;
-	width: 100vw;
+	/* width: 100vw; */
 	height: 80vh;
 	top: 4rem;
 	left: 0;
@@ -85,5 +89,8 @@
 @media screen and (min-width: 900px) {
 	.margin-left-4 {
 		margin-left: 4rem;
+	}
+	.amaara-logo {
+		font-size: 1.5rem;
 	}
 }

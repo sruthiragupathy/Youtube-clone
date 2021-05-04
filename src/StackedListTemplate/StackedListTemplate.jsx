@@ -4,14 +4,16 @@ import { HorizontalCard } from "../HorizontalCard/HorizontalCard";
 import {Link} from "react-router-dom";
 import { SideBar } from "../Navbar/SideBar";
 import { getVideosOfPlaylistCategory } from "../utils/utils";
+import { BottomNavBar } from "../Navbar/BottomNavBar";
 
 export const StackedListTemplate = () => {
     const {libraryName, libraryId}= useParams();
-    const {myPlaylist,myPlaylistDispatch} = useMyPlaylist();
+    const {myPlaylist} = useMyPlaylist();
 
     return (
         <>
         <SideBar/>
+        <BottomNavBar/>
         <div className = "flex-center margin-left-4">
             {
                     <div className = "stacked-list">

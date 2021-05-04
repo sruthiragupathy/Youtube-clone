@@ -1,23 +1,22 @@
 import { useMyPlaylist } from "../Context/MyPlaylistContext";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 import "./Modal.css";
 import { useVideoList } from "../Context/VideoLibraryContext";
-import { RestApiCalls } from "../utils/callRestApi";
+
 import { BACKEND } from "../utils/api";
 import axios from "axios";
 import { useAuth } from "../Context/AuthContext";
 
 export const Modal = ({ video }) => {
-  const inputEl = useRef()
+
   const {auth} = useAuth()
   const { myPlaylist, myPlaylistDispatch } = useMyPlaylist();
   const { videoLibraryDispatch } = useVideoList();
   const [openForm, setOpenForm] = useState(false);
   const [newLibrary, setNewLibrary] = useState("");
   const [error, setError] = useState("");
-  console.log({ video });
-  console.log({useRef})
+
   const createNewPlaylistHandler = (e) => {
     e.preventDefault();
     setOpenForm(true);

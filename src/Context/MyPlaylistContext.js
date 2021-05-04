@@ -1,7 +1,6 @@
 import { createContext, useContext, useReducer } from "react";
 import { myPlaylistReducer } from "./myPlaylistReducer";
-import { v4 as uuidv4 } from "uuid";
-import { videoLibrary } from "../database";
+
 
 const MyPlayListContext = createContext();
 

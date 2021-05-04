@@ -3,7 +3,7 @@ export const getIdsInPlaylistCategory = (libraryArray, playlistCategory) => {
 
   return libraryArray
     .find((library) => library.name === playlistCategory)
-    .videos.map((video) => video._id);
+    ?.videos.map((video) => video._id);
 };
 
 
@@ -15,8 +15,7 @@ export const isVideoInLibrary = (myPlaylist,videoId, libraryId) => {
 
 export const getIdOfAPlaylist = (myPlaylist, playlistCategory) => {
   console.log(myPlaylist)
-  const {_id:playlistId} = myPlaylist.find(library => library.name === playlistCategory);
-  return playlistId
+  return myPlaylist.find(library => library.name === playlistCategory)?._id;
 }
 
 export const getVideosOfPlaylistCategory = (myPlaylist, playlistId) => {

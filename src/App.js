@@ -19,7 +19,7 @@ import axios from 'axios'
 
 	function App() {
 		const { videoLibrary, videoLibraryDispatch } = useVideoList()
-		const { myPlaylist, myPlaylistDispatch } = useMyPlaylist()
+		const {  myPlaylistDispatch } = useMyPlaylist()
 		const [loading, setLoading] = useState(true)
 		const { auth } = useAuth();
 		console.log({videoLibrary})

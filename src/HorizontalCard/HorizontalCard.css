@@ -1,75 +1,80 @@
 .list {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  /* width: 100vw; */
-  box-sizing: border-box;
-  width: 100%;
-  margin: auto;
-  background: var(--light-grey);
-  padding: 1rem;
-  border-bottom: 1px solid var(--lightgrey2);
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	/* width: 100vw; */
+	box-sizing: border-box;
+	width: 100%;
+	margin: auto;
+	background: var(--light-grey);
+	padding: 1rem;
+	border-bottom: 1px solid var(--lightgrey2);
 }
 
 .list:hover {
-  background: var(--light-grey1);
+	background: var(--light-grey1);
 }
 
 .list__img img {
-  height: 9rem;
-  width: 12.5rem;
+	height: 9rem;
+	width: 12.5rem;
 }
 
 .list__details {
-  text-align: left;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
+	text-align: left;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 100%;
 }
 
 .details__title {
-  font-weight: 1000;
-  margin-bottom: 0.75rem;
-  /* line-height: 1.5rem; */
-  text-align: justify;
+	font-weight: 1000;
+	margin-bottom: 0.75rem;
+	/* line-height: 1.5rem; */
+	display: -webkit-box;
+	/* max-width: 100%; */
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-align: left;
 }
 
 .details__channeltitle {
-  color: var(--midgrey);
+	color: var(--midgrey);
 }
 
 .btn-options {
-  width: 1.75rem;
-  height: 1.5rem;
-  border: 0;
-  background: transparent;
-  z-index: 3;
+	width: 1.75rem;
+	height: 1.5rem;
+	border: 0;
+	background: transparent;
+	z-index: 3;
 }
 
 .btn-options:hover {
-  background: var(--light-grey1);
+	background: var(--light-grey1);
 }
 
 .horizontal-card__option {
-  position: absolute;
-  background: #fff;
-  right: 1.75rem;
-  top: 2.5rem;
-  padding: 0.5rem 1rem;
+	position: absolute;
+	background: #fff;
+	right: 1.75rem;
+	top: 2.5rem;
+	padding: 0.5rem 1rem;
 }
 
 .btn-transparent {
-  width: 100%;
-  background: transparent;
-  border: 0;
-  height: 100%;
+	width: 100%;
+	background: transparent;
+	border: 0;
+	height: 100%;
 }
 
 @media only screen and (min-width: 900px) {
-  .details__title {
-    line-height: 1.5rem;
-  }
+	.details__title {
+		line-height: 1.5rem;
+	}
 }

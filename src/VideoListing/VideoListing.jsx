@@ -5,6 +5,7 @@ import { SideBar } from "../Navbar/SideBar";
 import { VideoCard } from "./VideoCard";
 import { Link } from "react-router-dom";
 import "./VideoListing.css";
+import { BottomNavBar } from "../Navbar/BottomNavBar";
 
 export const VideoListing = () => {
   const { videoLibrary } = useVideoList();
@@ -13,6 +14,7 @@ export const VideoListing = () => {
   return (
     <>
       <SideBar />
+      <BottomNavBar/>
       <div className="videoListing-grid">
         {videoLibrary.videoList.map((video) => {
           return (

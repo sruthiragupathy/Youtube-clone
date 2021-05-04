@@ -1,7 +1,5 @@
 import {
-  addNewItemToExistingArray,
   addNewCategoryToLibrary,
-  removeExistingItemFromArray,
   toggleCheckBox,
   removeVideoFromACategory,
   addVideoToACategory,

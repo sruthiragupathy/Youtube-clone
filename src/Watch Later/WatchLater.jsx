@@ -1,11 +1,12 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+// import axios from "axios";
+// import { useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useMyPlaylist } from "../Context/MyPlaylistContext";
 import { HorizontalCard } from "../HorizontalCard/HorizontalCard";
+import { BottomNavBar } from "../Navbar/BottomNavBar";
 import { SideBar } from "../Navbar/SideBar";
-import { BACKEND } from "../utils/api";
+// import { BACKEND } from "../utils/api";
 
 
 import "./WatchLater.css";
@@ -14,7 +15,7 @@ import "./WatchLater.css";
 export const WatchLater = () => {
   const { myPlaylist } = useMyPlaylist();
   const {watchLaterId} = useParams()
-  const [watchLaterVideos, setWatchLaterVideos] = useState([])
+  // const [watchLaterVideos, setWatchLaterVideos] = useState([])
 
   // useEffect(()=> {
   //   (async function () {
@@ -37,6 +38,7 @@ export const WatchLater = () => {
   return (
     <>
       <SideBar />
+      <BottomNavBar />
       <div className="flex-center margin-left-4">
         {!getWatchLaterVideos()?.length ?  (
           <div className="no-videos">"No videos to show"</div>

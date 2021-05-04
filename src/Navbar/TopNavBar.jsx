@@ -19,7 +19,7 @@ export const TopNavBar = () => {
             };
         }, [ref]);
       }
-    const { auth, logoutHandler } = useAuth();
+    const { auth } = useAuth();
     const [hover, setHover] = useState(false)
     const wrapperRef = useRef(null);
     useOutsideClickDetecter(wrapperRef);
@@ -44,7 +44,7 @@ export const TopNavBar = () => {
           >
             <button className = "amaara-logo" 
             >
-              amaara Tv
+              amaara
             </button>
           </NavLink>
             </div>
@@ -52,7 +52,7 @@ export const TopNavBar = () => {
             <SearchInput/>
             {
           auth.isLoggedIn ? 
-          <div onClick = {hoverHandler}  className = "purple-txt flex-center pointer">
+          <div onClick = {hoverHandler}  className = "purple-txt flex-center pointer profile">
             <span>Hi {auth?.currentUser?auth.currentUser:""}!</span>
           </div> : 
           <div className = "purple-txt pointer" onClick = {loginHandler}>LOGIN / SIGNUP</div>
@@ -62,6 +62,8 @@ export const TopNavBar = () => {
         <button className = "btn btn-outline-primary" onClick = {logout}>Logout</button>
         </div>
         }
+        {/* <SearchInput/> */}
+
         </>
     )
 }

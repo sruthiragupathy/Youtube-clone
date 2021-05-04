@@ -4,8 +4,8 @@ import { BACKEND } from "../utils/api";
 import "./HorizontalCard.css"
 
 
-export const HorizontalCard = ({video, libraryName= "Watch Later",libraryId}) => {
-    const {videoId, title,  channelTitle, channelProfile, viewCount} = video;
+export const HorizontalCard = ({video, libraryId}) => {
+    const {videoId, title,  channelTitle} = video;
     console.log({video})
     const {myPlaylistDispatch} = useMyPlaylist();
 
