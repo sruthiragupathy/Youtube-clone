@@ -26,10 +26,6 @@ export const VideoContainer = ({video, videoPlayerRef}) => {
 
     const likedPlaylistId = getIdOfAPlaylist(myPlaylist.myLibrary, "Liked Videos")
     const savedPlaylistId = getIdOfAPlaylist(myPlaylist.myLibrary, "Saved Videos")
-    console.log({likedPlaylistId, savedPlaylistId})
-
-
-
     const addToLibraryHandler = async (playlistCategory, libraryId, videoId) => {
         if(isVideoInLibrary(videoId,libraryId)) {
           const  response  = await axios.delete(`${BACKEND}/playlist/${libraryId}/${videoId}`);
@@ -48,7 +44,6 @@ export const VideoContainer = ({video, videoPlayerRef}) => {
         e.preventDefault();
         videoLibraryDispatch({type:"SET_SHOW_MODAL",payload:video._id})
     }
-    console.log("currentTime", videoPlayerRef)
 
     return (
         <div className = "main-video__container">

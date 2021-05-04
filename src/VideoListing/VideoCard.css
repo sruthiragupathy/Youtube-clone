@@ -41,7 +41,7 @@
 .txt__title {
 	font-weight: 1000;
 	font-size: 1rem;
-	text-align: justify;
+	/* text-align: justify; */
 	display: -webkit-box;
 	max-width: 15rem;
 	-webkit-line-clamp: 2;

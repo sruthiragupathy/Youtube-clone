@@ -31,14 +31,14 @@ export const WatchLater = () => {
   //    myPlaylistDispatch({type: "ADD_VIDEO_TO_LIBRARY", payload: response.data.response})
   // }
   const getWatchLaterVideos = () => {
-    console.log(myPlaylist.myLibrary.find(library => library._id === watchLaterId).videos)
-    return myPlaylist.myLibrary.find(library => library._id === watchLaterId).videos
+    // console.log(myPlaylist.myLibrary.find(library => library._id === watchLaterId).videos)
+    return myPlaylist?.myLibrary?.find(library => library._id === watchLaterId)?.videos
   }
   return (
     <>
       <SideBar />
       <div className="flex-center margin-left-4">
-        {!getWatchLaterVideos().length ?  (
+        {!getWatchLaterVideos()?.length ?  (
           <div className="no-videos">"No videos to show"</div>
         ) : (
           <div className="stacked-list">

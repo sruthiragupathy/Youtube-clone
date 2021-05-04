@@ -5,7 +5,7 @@ import "./HorizontalCard.css"
 
 
 export const HorizontalCard = ({video, libraryName= "Watch Later",libraryId}) => {
-    const {_id, videoId, title,  channelTitle, channelProfile, viewCount} = video;
+    const {videoId, title,  channelTitle, channelProfile, viewCount} = video;
     console.log({video})
     const {myPlaylistDispatch} = useMyPlaylist();
 

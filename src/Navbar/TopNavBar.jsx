@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../Context/AuthContext";
+import { SearchInput } from "./SearchInput";
 import "./TopNavBar.css";
-
 
 export const TopNavBar = () => {
     const useOutsideClickDetecter = (ref) => {
@@ -48,10 +48,8 @@ export const TopNavBar = () => {
             </button>
           </NavLink>
             </div>
-            <div className = "top-navbar__form">
-                <input placeholder = "Search" className = "form__input"/>
-                <button className = "form__btn btn-primary"><i className = "fa fa-search"></i></button>
-            </div>
+           
+            <SearchInput/>
             {
           auth.isLoggedIn ? 
           <div onClick = {hoverHandler}  className = "purple-txt flex-center pointer">

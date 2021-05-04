@@ -30,11 +30,47 @@
 
 .top-navbar__form {
 	display: flex;
+	width: 50vw;
+	position: relative;
+}
+
+.autocomplete-items {
+	position: absolute;
+	border: 1px solid #d4d4d4;
+	border-bottom: none;
+	border-top: none;
+	background: #fff;
+	width: 100%;
+	z-index: 99;
+	/*position the autocomplete items to be the same width as the container:*/
+	top: 100%;
+	left: 0;
+	right: 0;
+	text-align: left;
+}
+
+.autocomplete-items div {
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+	background-color: #fff;
+	border-bottom: 1px solid #d4d4d4;
+	max-width: 100%;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	line-height: 2rem;
+}
+
+.autocomplete-items div:hover {
+	/*when hovering an item:*/
+	background-color: #e9e9e9;
 }
 
 .form__input {
 	padding: 0.75rem 0.5rem;
-	width: 40vw;
+	width: 100%;
 }
 
 .form__btn {

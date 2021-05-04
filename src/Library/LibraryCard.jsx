@@ -2,7 +2,7 @@ import axios from "axios";
 import {NavLink} from "react-router-dom";
 import { useMyPlaylist } from "../Context/MyPlaylistContext";
 import { BACKEND } from "../utils/api";
-
+const defaultPlaylists = ["Saved Videos", "Liked Videos", "Watch Later"];
 export const LibraryCard = ({library}) => {
     const {_id,name,videos} = library;
     const {myPlaylistDispatch} = useMyPlaylist();
@@ -35,9 +35,9 @@ export const LibraryCard = ({library}) => {
             <div className = "horizontal-card__option">
                 <button className = "btn-transparent">Remove from playlist</button>
             </div> */}
-            <button className = "btn-icon br trash" onClick = {deletePlaylist}>
+            {!defaultPlaylists.includes(name) && <button className = "btn-icon br trash" onClick = {deletePlaylist}>
                 <i className ="fa fa-trash-o fa-2x"></i>
-            </button>
+            </button>}
             </NavLink>
     
         

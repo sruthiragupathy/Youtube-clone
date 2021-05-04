@@ -20,8 +20,7 @@ export const getIdOfAPlaylist = (myPlaylist, playlistCategory) => {
 }
 
 export const getVideosOfPlaylistCategory = (myPlaylist, playlistId) => {
-  const {videos} = myPlaylist.find(playlist => playlist._id===playlistId);
-  return videos;
+  return myPlaylist.find(playlist => playlist._id===playlistId)?.videos;
 }
 
 export const getVideoById = (videoList, videoId) => {

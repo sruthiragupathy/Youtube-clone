@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 .App {
 	box-sizing: border-box;
@@ -62,10 +62,24 @@
 .amaara-logo {
 	font-weight: 500;
 	color: var(--purple);
-	font-family: "Pacifico", cursive;
+	font-family: 'Pacifico', cursive;
 	background: transparent;
 	border: none;
 	font-size: 1.5rem;
+}
+
+.loader {
+	position: absolute;
+	width: 100vw;
+	height: 80vh;
+	top: 4rem;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--purple);
+	z-index: 10;
 }
 
 @media screen and (min-width: 900px) {

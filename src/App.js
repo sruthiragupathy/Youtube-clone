@@ -1,19 +1,20 @@
-	import { useEffect, useState } from 'react'
-	import './App.css'
-	import { RestApiCalls } from './utils/callRestApi'
-	import { useVideoList } from './Context/VideoLibraryContext'
-	import { VideoListing } from './VideoListing/VideoListing'
-	import { TopNavBar } from './Navbar/TopNavBar.jsx'
-	import { Routes, Route } from 'react-router-dom'
-	import { useMyPlaylist } from './Context/MyPlaylistContext'
-	import { WatchLater } from './Watch Later/WatchLater'
-	import { Library } from './Library/Library'
-	import { StackedListTemplate } from './StackedListTemplate/StackedListTemplate'
-	import { PlayVideoPage } from './PlayVideoPage/PlayVideoPage'
-	import { BACKEND } from './utils/api'
-	import {Login} from './Login/Login';
-	import {SignUp} from './Login/SignUp';
-	import { useAuth } from './Context/AuthContext'
+import { useEffect, useState } from 'react'
+import './App.css'
+import { RestApiCalls } from './utils/callRestApi'
+import { useVideoList } from './Context/VideoLibraryContext'
+import { VideoListing } from './VideoListing/VideoListing'
+import { TopNavBar } from './Navbar/TopNavBar.jsx'
+import { Routes, Route } from 'react-router-dom'
+import { useMyPlaylist } from './Context/MyPlaylistContext'
+import { WatchLater } from './Watch Later/WatchLater'
+import { Library } from './Library/Library'
+import { StackedListTemplate } from './StackedListTemplate/StackedListTemplate'
+import { PlayVideoPage } from './PlayVideoPage/PlayVideoPage'
+import { BACKEND } from './utils/api'
+import {Login} from './Login/Login';
+import {SignUp} from './Login/SignUp';
+import { useAuth } from './Context/AuthContext';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import axios from 'axios'
 
 	function App() {
@@ -44,7 +45,7 @@ import axios from 'axios'
 					type: 'LOAD_VIDEOLIST',
 					payload: response.response,
 				})
-			setLoading(false)
+
 
 			})()
 			console.log({ auth })
@@ -52,14 +53,16 @@ import axios from 'axios'
 
 		useEffect(() => {
 			auth.user._id && fetchPlaylist() && fetchNotes()
+			setLoading(false)
 		}, [auth.user._id])
 		return (
 			<div className={`App`}>
 				{videoLibrary.showModal && <div className='background-overlay'></div>}
 				<TopNavBar />
-				{loading ? (
-					<p>Data not loaded yet</p>
-				) : (
+				{loading ?  
+					<div className = "loader">
+        			<CircularProgress color = "primary"/>
+      				</div>  : (
 					<Routes>
 						<Route path='/watchlater/:watchLaterId' element={<WatchLater />} />
 						<Route path='/library/:libraryName/:libraryId' element={<StackedListTemplate />} />
@@ -68,7 +71,7 @@ import axios from 'axios'
 						<Route path = '/login' element = {<Login/>} />
 						<Route path = '/signup' element = {<SignUp/>} />
 						<Route path='/' end element={<VideoListing />} />
-			</Routes>
+					</Routes>
 				)}
 		<Routes>
 			
