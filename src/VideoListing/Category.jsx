@@ -5,7 +5,6 @@ const useQuery = () => {
   }
 
 export const Category = () => {
-    console.log("hi from category")
     const {videoLibrary} = useVideoList();
     const query = useQuery()
     const category = query.get("category")
@@ -20,8 +19,8 @@ export const Category = () => {
                 <button className = {`btn btn-br ${getCategoryButtonClassName(null)}`}>All</button>
             </NavLink>
         {videoLibrary.categories.slice(0,4).map(category => {
-            return <NavLink to = {`?category=${category.name}`} className = "category-nav">
-                <button key = {category._id} className = {`btn btn-br capitalize ${getCategoryButtonClassName(category.name)}`}>{category.name}</button>
+            return <NavLink to = {`?category=${category.name}`} className = "category-nav" key = {category._id}>
+                <button  className = {`btn btn-br capitalize ${getCategoryButtonClassName(category.name)}`}>{category.name}</button>
             </NavLink>
         }
         )}

@@ -7,7 +7,6 @@ import { BottomNavBar } from "../Navbar/BottomNavBar";
 
 export const Library = () => {
     const {myPlaylist} = useMyPlaylist();
-    console.log(myPlaylist.myLibrary)
     return  <>
     <SideBar/>
     <BottomNavBar/>

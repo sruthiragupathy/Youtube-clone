@@ -25,7 +25,7 @@ export const StackedListTemplate = () => {
                     {
                        getVideosOfPlaylistCategory(myPlaylist?.myLibrary, libraryId)?.length?getVideosOfPlaylistCategory(myPlaylist.myLibrary, libraryId).map(video => {
                             return (
-                                <Link to = {`/video/${video._id}`}>
+                                <Link to = {`/video/${video._id}`} key = {libraryId}>
                                 <HorizontalCard key = {video._id} video = {video.video} libraryName = {libraryName} libraryId = {libraryId}/>
                                 </Link>
                             )

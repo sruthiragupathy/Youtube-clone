@@ -15,24 +15,8 @@ import "./WatchLater.css";
 export const WatchLater = () => {
   const { myPlaylist } = useMyPlaylist();
   const {watchLaterId} = useParams()
-  // const [watchLaterVideos, setWatchLaterVideos] = useState([])
-
-  // useEffect(()=> {
-  //   (async function () {
-  //     const  response  = await axios.get(`${BACKEND}/playlist/${watchLaterId}`)
-  //     console.log(response);
-  //     setWatchLaterVideos(response.data.response)
-  // })()
-  //   },[])
-  //   const deleteFromPlaylist = async (e) => {
-  //     e.preventDefault();
-  //     console.log("delete")
-  //     const response = await axios.delete(`${BACKEND}/playlist/${watchLaterId}/${video._id}`)
-  //    console.log({response})
-  //    myPlaylistDispatch({type: "ADD_VIDEO_TO_LIBRARY", payload: response.data.response})
-  // }
+  
   const getWatchLaterVideos = () => {
-    // console.log(myPlaylist.myLibrary.find(library => library._id === watchLaterId).videos)
     return myPlaylist?.myLibrary?.find(library => library._id === watchLaterId)?.videos
   }
   return (

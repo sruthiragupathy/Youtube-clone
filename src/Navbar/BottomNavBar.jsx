@@ -31,7 +31,6 @@ export const BottomNavBar = () => {
 
         const logout = () => {
             setHover(hover => false);
-            console.log(location.pathname)
             logoutHandler(`${isAPrivateRoute(location.pathname) ? "/" : location.pathname+location.search?location.search:""}`)
             
           }

@@ -7,7 +7,6 @@ import "./TopNavBar.css";
 import {isAPrivateRoute} from "../utils/utils"
 export const TopNavBar = () => {
   const location = useLocation();
-  console.log({location});
     const useOutsideClickDetecter = (ref) => {
         useEffect(() => {
             function handleClickOutside(event) {
@@ -34,7 +33,6 @@ export const TopNavBar = () => {
    }
    const logout = () => {
     setHover(hover => false);
-    console.log(location.pathname)
     logoutHandler(`${isAPrivateRoute(location.pathname) ? "/" : location.pathname+location.search?location.search:""}`)
     
   }

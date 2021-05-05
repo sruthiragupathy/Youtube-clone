@@ -7,7 +7,6 @@ import {
 import { v4 as uuidv4 } from "uuid";
 
 export const myPlaylistReducer = (myPlaylist, { type, payload, value }) => {
-  console.log(type, payload, value);
   switch (type) {
     case "SET_LIBRARY":
       return {
@@ -19,7 +18,6 @@ export const myPlaylistReducer = (myPlaylist, { type, payload, value }) => {
       }
     case "REMOVE_LIBRARY":
       return {...myPlaylist, myLibrary: myPlaylist.myLibrary.filter(library => {
-        console.log({library})
         return library._id!==payload
       })}
     case "ADD_TO_LIBRARY":

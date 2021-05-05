@@ -26,12 +26,11 @@ export const VideoContainer = ({video,videoPlayerRef}) => {
     const { auth } = useAuth();
     const {videoId} = useParams()
 
-    const isVideoInLibrary = (libraryId) => {
-        const currentLibrary = myPlaylist.myLibrary.find( library => library._id === libraryId);
-        const videoIdsInCurrentLibrary = currentLibrary.videos.map(video => video._id)
-        return videoIdsInCurrentLibrary.includes(videoId)
-      }
-
+    const isVideoInLibrary = (videoId,libraryId) => {
+            const currentLibrary = myPlaylist.myLibrary.find( library => library._id === libraryId);
+            const videoIdsInCurrentLibrary = currentLibrary.videos.map(video => video._id)
+            return videoIdsInCurrentLibrary.includes(videoId)
+          }
       
 
     const likedPlaylistId = getIdOfAPlaylist(myPlaylist.myLibrary, "Liked Videos")
@@ -42,14 +41,14 @@ export const VideoContainer = ({video,videoPlayerRef}) => {
             hideToast(videoLibraryDispatch, 3000);
         }
         else{
-        if(isVideoInLibrary(video.videoId,libraryId)) {
-          const  response  = await axios.delete(`${BACKEND}/playlist/${libraryId}/${video.videoId}`);
+        if(isVideoInLibrary(video._id,libraryId)) {
+          const  response  = await axios.delete(`${BACKEND}/playlist/${libraryId}/${video._id}`);
           myPlaylistDispatch({type: "ADD_VIDEO_TO_LIBRARY", payload: response.data.response});
           videoLibraryDispatch({ type:"TOGGLE_TOAST", payload: `1 video removed from ${playlistCategory}`, value: true })
           hideToast(videoLibraryDispatch)
         }
         else {
-          const  response  = await axios.post(`${BACKEND}/playlist/${libraryId}/${videoId}`);
+          const  response  = await axios.post(`${BACKEND}/playlist/${libraryId}/${video._id}`);
           myPlaylistDispatch({type: "ADD_VIDEO_TO_LIBRARY", payload: response.data.response})
           videoLibraryDispatch({ type:"TOGGLE_TOAST", payload: `1 video added to ${playlistCategory}`, value: true })
           hideToast(videoLibraryDispatch)

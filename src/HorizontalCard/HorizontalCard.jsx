@@ -6,14 +6,12 @@ import "./HorizontalCard.css"
 
 export const HorizontalCard = ({video, libraryId}) => {
     const {videoId, title,  channelTitle} = video;
-    console.log({video})
     const {myPlaylistDispatch} = useMyPlaylist();
 
     const deleteFromPlaylist = async (e) => {
         e.preventDefault();
-        console.log("delete");
         const response = await axios.delete(`${BACKEND}/playlist/${libraryId}/${video._id}`)
-       console.log({response})
+
        myPlaylistDispatch({type: "ADD_VIDEO_TO_LIBRARY", payload: response.data.response})
     }
     return (

@@ -76,7 +76,6 @@ export const SignUp = () => {
         setLoading(true)
         if(validateForm()){
                 const response = await RestApiCalls("POST", `${BACKENDAUTH}/signup`, user)
-                console.log("response",response);
                 if(response?.success){
                     authDispatch({type:"SET_ISLOGGEDIN" , payload:true});
                     authDispatch({type:"SET_CURRENTUSER",payload:getNameFromEmail(user.email)});

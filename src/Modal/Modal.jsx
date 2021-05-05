@@ -29,12 +29,10 @@ export const Modal = ({ video }) => {
     myPlaylistDispatch({ type: "SET_ALL_CHECKED_TO_FALSE" });
   };
   const checkboxHandler = async (libraryId, videoId) => {
-    console.log({libraryId, videoId})
     // e.preventDefault();
     // e.stopPropagation();
     if(isVideoInLibrary(videoId,libraryId)) {
       const  response  = await axios.delete(`${BACKEND}/playlist/${libraryId}/${videoId}`);
-      console.log( response.data.response.videos);
       myPlaylistDispatch({type: "ADD_VIDEO_TO_LIBRARY", payload: response.data.response})
     }
     else {
@@ -53,7 +51,6 @@ export const Modal = ({ video }) => {
     e.preventDefault();
     if (newLibrary) {
       const response = await axios.post(`${BACKEND}/${auth.user._id}/playlists/${video._id}`, {name: newLibrary})
-      console.log({response})
       myPlaylistDispatch({type: "ADD_NEW_LIBRARY", payload: response.data.response})
       setNewLibrary("");
     } else {

@@ -59,13 +59,7 @@ export const addVideoToACategory = (library, currentLibrary) => {
 }
 
 export const removeVideoFromACategory = (library,category,videoId) => {
-    console.log(library.map( item => {
-        if(item.name === category){
-            // item.videoList = item.videoList.filter(video => video.id === videoId)
-            return {...item, videoList:item.videoList.filter(video => video.id !== videoId)}
-        }
-        return item;
-    }))
+
     return library.map( item => {
         if(item.name === category){
             // item.videoList = item.videoList.filter(video => video.id === videoId)
@@ -76,7 +70,6 @@ export const removeVideoFromACategory = (library,category,videoId) => {
 }
 
 export const formatTime = (time) => {
-    console.log(time, typeof time);
     let timeString = ""
     let quotient = Math.floor(time/3600)
     let remainder = Math.floor(time%3600)
@@ -105,7 +98,6 @@ export const formatTime = (time) => {
         timeString+=`${remainder}`
 
     }
-    console.log({timeString})
     return timeString;
 }
 

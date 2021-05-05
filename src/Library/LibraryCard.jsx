@@ -10,13 +10,10 @@ export const LibraryCard = ({library}) => {
 
     const deletePlaylist = async (e) => {
         e.preventDefault();
-        console.log("delete")
         const response = await axios.delete(`${BACKEND}/playlists/${_id}`)
-       console.log({response})
        myPlaylistDispatch({type: "REMOVE_LIBRARY", payload: response.data.response})
     }
 
-    console.log({videos});
     return (
         
             <NavLink to = {`/library/${name}/${_id}`} className = "list relative">

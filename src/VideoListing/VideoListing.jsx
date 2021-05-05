@@ -35,7 +35,7 @@ export const VideoListing = () => {
           return (
             <div key={video._id}>
               <Link to={`/video/${video._id}`}>
-                <VideoCard video={video} onClick={() => console.log("hi")} />
+                <VideoCard video={video}  />
               </Link>
               {videoLibrary.showModal === video._id && (
                 <Modal video={video} key={video._id} />

@@ -21,12 +21,10 @@ export const PlayVideoPage = () => {
     const videoPlayerRef = useRef()
 
     useEffect(() => {
-        // console.log("from useeffect")
         (async function() {
             try{
             const  response = await axios.get(`${BACKEND}/video/${videoId}`) ;
             // if(response.status === 200) {
-                console.log(response);
               setVideo(response.data.response)
              }
              catch(error){

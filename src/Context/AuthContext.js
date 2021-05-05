@@ -70,7 +70,6 @@ export const AuthProvider = ({children}) => {
     }
 
     const logoutHandler = (to) => {
-        console.log({to})
         authDispatch({type:"SET_LOADING"})
         setTimeout(() => {
             localStorage?.removeItem("logincredentials")

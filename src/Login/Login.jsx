@@ -12,7 +12,6 @@ import { useVideoList } from "../Context/VideoLibraryContext";
 export const Login = () => {
     const navigate = useNavigate();
     const {auth, LoginUserWithCredentials} = useAuth();
-    console.log({auth})
     const location= useLocation();
     const { videoLibrary, videoLibraryDispatch } = useVideoList();
     const [user, setUser] = useState({
@@ -65,7 +64,7 @@ export const Login = () => {
         if(validateForm()){
             const response = await LoginUserWithCredentials(user,location.state?.from?location.state.from:"/");
             if(response?.success) {
-                videoLibraryDispatch({type:"TOGGLE_TOAST",payload:"You have been logged in successfully, Happy Shopping", value: true});
+                videoLibraryDispatch({type:"TOGGLE_TOAST",payload:"Login is successful, Continue watching", value: true});
                 hideToast()
             }
             if(!response?.success){

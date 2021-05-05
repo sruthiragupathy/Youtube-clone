@@ -25,7 +25,6 @@ export const Options = ({ showOptions, video }) => {
     else{
     const libraryId = myPlaylist.myLibrary.find(item => item.name === "Watch Later")._id
     const  response  = await axios.post(`${BACKEND}/playlist/${libraryId}/${video._id}`);
-    console.log({response})
     myPlaylistDispatch({type: "ADD_VIDEO_TO_LIBRARY", payload: response.data.response})
     videoLibraryDispatch({ type: "SET_SHOW_OPTIONS", payload: "0" });
     }

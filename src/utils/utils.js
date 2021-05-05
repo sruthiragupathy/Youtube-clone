@@ -1,6 +1,4 @@
 export const getIdsInPlaylistCategory = (libraryArray, playlistCategory) => {
-  console.log({libraryArray, playlistCategory})
-
   return libraryArray
     .find((library) => library.name === playlistCategory)
     ?.videos.map((video) => video._id);
@@ -14,7 +12,6 @@ export const isVideoInLibrary = (myPlaylist,videoId, libraryId) => {
 }
 
 export const getIdOfAPlaylist = (myPlaylist, playlistCategory) => {
-  console.log(myPlaylist)
   return myPlaylist.find(library => library.name === playlistCategory)?._id;
 }
 
@@ -38,9 +35,9 @@ const privateRoutes = ["/library", "/watchlater"]
 
 export const isAPrivateRoute = (path) => {
   const booleanArray = privateRoutes.map( route => {
-    // console.log(path.search(route))
+
     return path.search(route) > -1 ? true :false
   })
-  console.log(booleanArray)
+
   return booleanArray.indexOf(true) > -1 ;
 }

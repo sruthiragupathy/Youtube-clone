@@ -23,10 +23,10 @@ import { PrivateRoutes } from './Navbar/PrivateRoutes'
 		const {  myPlaylistDispatch } = useMyPlaylist()
 		const [loading, setLoading] = useState(true)
 		const { auth } = useAuth();
-		console.log({videoLibrary})
+
 
 		const fetchPlaylist = async () => {
-			console.log(auth)
+
 			const { response } = await RestApiCalls('GET', `${BACKEND}/${auth.user._id}/playlists`)
 			myPlaylistDispatch({type: "SET_LIBRARY", payload: response.response})
 
@@ -34,14 +34,14 @@ import { PrivateRoutes } from './Navbar/PrivateRoutes'
 
 		const fetchNotes = async () => {
 			const response = await axios.get(`${BACKEND}/${auth.user._id}/notes`);
-			console.log({response})
+
 			videoLibraryDispatch({type:"SET_NOTES", payload: response.data.response})
 		}
 
 		useEffect(() => {
 			(async function () {
 				const { response } = await RestApiCalls('GET', `${BACKEND}/videos`)
-				console.log({response})
+
 				videoLibraryDispatch({
 					type: 'LOAD_VIDEOLIST',
 					payload: response.response,
@@ -51,7 +51,7 @@ import { PrivateRoutes } from './Navbar/PrivateRoutes'
 			})() && 
 			(async function () {
 				const { response } = await RestApiCalls('GET', `${BACKEND}/categories`)
-				console.log({response})
+
 				videoLibraryDispatch({
 					type: 'LOAD_CATEGORIES',
 					payload: response.response,
@@ -62,7 +62,6 @@ import { PrivateRoutes } from './Navbar/PrivateRoutes'
 			setTimeout(() => {
 				setLoading(false)
 			},2000)
-			console.log({ auth })
 		}, [])
 
 		useEffect(() => {

@@ -24,11 +24,9 @@ export const Notes = ({video, videoPlayerRef}) => {
             if(!edit){
                 const response = await axios.post(`${BACKEND}/${auth.user._id}/notes/${video._id}`,
                 {note: note, time: formatTime(videoPlayerRef.current.getCurrentTime())})
-                console.log({response})
                 videoLibraryDispatch({ type: "SET_NOTES", payload: response.data.response})
             }
             else {
-                console.log("editing")
                 const response = await axios.post(`${BACKEND}/${auth.user._id}/notes/${video._id}/${editNote}`,
                 {note: note})
                 videoLibraryDispatch({ type: "SET_NOTES", payload: response.data.response})
@@ -38,9 +36,6 @@ export const Notes = ({video, videoPlayerRef}) => {
             setNote(() => "");
     }
     const getNotes = (videoId) => {
-        console.log("hello from me")
-        // console.log(videoLibrary.videoList.find(item => item.id === videoId))
-        console.log(videoLibrary.notes)
         return videoLibrary.notes.find(item => item.videoId === videoId)?.notes
     }
     const editNotes = (note) => {
