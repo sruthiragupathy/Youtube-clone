@@ -59,12 +59,15 @@ import { PrivateRoutes } from './Navbar/PrivateRoutes'
 
 
 			})()
+			setTimeout(() => {
+				setLoading(false)
+			},2000)
 			console.log({ auth })
 		}, [])
 
 		useEffect(() => {
 			auth.user._id && fetchPlaylist() && fetchNotes()
-			setLoading(false)
+			// setLoading(false)
 		}, [auth.user._id])
 		return (
 			<div className={`App`}>
@@ -72,7 +75,7 @@ import { PrivateRoutes } from './Navbar/PrivateRoutes'
 				<TopNavBar />
 				{loading ?  
 					<div className = "loader">
-        			<CircularProgress color = "primary"/>
+        			<CircularProgress color = "inherit"/>
       				</div>  : (
 					<Routes>
 						<PrivateRoutes path='/watchlater/:watchLaterId' element={<WatchLater />} />

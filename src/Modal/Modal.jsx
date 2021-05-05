@@ -86,6 +86,7 @@ export const Modal = ({ video }) => {
         myPlaylist.myLibrary.map((library) => {
           return (
             <div className="library" key={library._id}>
+              <label className = "pointer">
               <input
                 type="checkbox"
                 checked={isVideoInLibrary(video._id,library._id)}
@@ -93,7 +94,7 @@ export const Modal = ({ video }) => {
                 name={library.name}
                 onChange={(e) => checkboxHandler(library._id, video._id)}
               />
-              <label htmlFor={library}>{library.name}</label>
+              {library.name}</label>
             </div>
           );
         }) : null

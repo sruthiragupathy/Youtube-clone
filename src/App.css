@@ -6,6 +6,11 @@
 	margin: 0;
 }
 
+a:focus {
+	outline: 2px solid var(--midgrey);
+	border-radius: 0.5rem;
+}
+
 .no-videos {
 	padding: 2rem;
 	font-size: 1.25rem;
@@ -97,4 +102,12 @@
 
 .btn {
 	border: 1.5px solid;
+}
+
+.capitalize {
+	text-transform: lowercase;
+}
+
+.capitalize::first-line {
+	text-transform: capitalize;
 }

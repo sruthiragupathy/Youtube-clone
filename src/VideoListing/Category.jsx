@@ -17,11 +17,11 @@ export const Category = () => {
     return (
         <>
         <NavLink to = "/" className = "category-nav">
-                <button className = {`btn ${getCategoryButtonClassName(null)}`}>All</button>
+                <button className = {`btn btn-br ${getCategoryButtonClassName(null)}`}>All</button>
             </NavLink>
-        {videoLibrary.categories.slice(0,5).map(category => {
+        {videoLibrary.categories.slice(0,4).map(category => {
             return <NavLink to = {`?category=${category.name}`} className = "category-nav">
-                <button key = {category._id} className = {`btn ${getCategoryButtonClassName(category.name)}`}>{category.name}</button>
+                <button key = {category._id} className = {`btn btn-br capitalize ${getCategoryButtonClassName(category.name)}`}>{category.name}</button>
             </NavLink>
         }
         )}

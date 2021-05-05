@@ -21,13 +21,12 @@ export const Library = () => {
                         myPlaylist?.myLibrary?.map(library => {
                             // console.log(library["videoList"].length)
                             return (
-                                library["videos"].length ? <LibraryCard key = {library._id} library = {library} /> : null
+                                // library["videos"].length ? 
+                                <LibraryCard key = {library._id} library = {library} /> 
                             )
                         })
                     }
                     </div>
                     </div>
         </>
-                
-    
-}
+        }

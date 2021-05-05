@@ -91,7 +91,7 @@ export const VideoContainer = ({video,videoPlayerRef}) => {
                 ></ReactPlayer>
             </div>
             <div className = "main-video__description">
-                <h3>{video.title}</h3>
+                <h3 className = "h3-title">{video.title}</h3>
                 <div className = "video-description__row2 grey-txt">
                     <div className = "grey-txt">
                         <span>{video.viewCount} • Dec 9, 2016</span>

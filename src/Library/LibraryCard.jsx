@@ -19,7 +19,7 @@ export const LibraryCard = ({library}) => {
     console.log({videos});
     return (
         
-            videos.length!==0 && <NavLink to = {`/library/${name}/${_id}`} className = "list relative">
+            <NavLink to = {`/library/${name}/${_id}`} className = "list relative">
             <div className = "list__img">
                 <img src = {`https://i.ytimg.com/vi/${videos[0]?.video?.videoId}/mqdefault.jpg`} alt = {name}/>
             </div>

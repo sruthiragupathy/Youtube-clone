@@ -1,43 +1,46 @@
 .main-video__container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
 }
 
 .video-description__row2 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .main-video__description {
-  text-align: left;
-  padding: 0 0.5rem;
+	text-align: left;
+	padding: 0 0.5rem;
 }
 
 .row2__icons {
-  color: var(--midgrey);
+	color: var(--midgrey);
 }
 
+.h3-title {
+	margin-block-end: 0.5rem;
+}
 .row2__icons button {
-  margin-right: 0.5rem;
+	margin-right: 0.5rem;
 }
 /* .btn-icon:hover {
   background: var(--light-grey1);
 } */
 
 .channel-description {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
 }
 
 .bold-txt {
-  font-weight: 1000;
+	font-weight: 1000;
 }
 
 .margin-left-1 {
-  margin-left: 1rem;
+	margin-left: 1rem;
 }
 
 /* @media only screen and (min-width: 900px) {
