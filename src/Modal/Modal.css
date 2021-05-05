@@ -59,7 +59,7 @@
 }
 
 .create-btn:hover {
-	background: var(--lightpurple);
+	background: #f5f3ff;
 }
 
 .new-playlist__input {
