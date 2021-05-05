@@ -6,6 +6,7 @@ const VideoLibraryContext = createContext();
 export const VideoLibraryProvider = ({ children }) => {
   const [videoLibrary, videoLibraryDispatch] = useReducer(videoLibraryReducer, {
     videoList: [],
+    categories:[],
     showOptions: "",
     showModal: "",
     overlay: false,

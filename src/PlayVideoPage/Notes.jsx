@@ -64,10 +64,12 @@ export const Notes = ({video, videoPlayerRef}) => {
             placeholder = "Take A Note"
             onChange = { onChangeHandler }
             />
-            <button className = "add-note-btn" type = "submit">
+            <button className = {`add-note-btn ${auth.user._id?"":"disabled"}`} type = "submit">
                 <AddIcon />
             </button>
         </form>
+        {!auth.user._id && <div className = "light-grey-txt">"Login to take notes"</div>}
+
         {
             videoLibrary.videoList.length && (getNotes(video._id) ?
             getNotes(video._id).map( note => {

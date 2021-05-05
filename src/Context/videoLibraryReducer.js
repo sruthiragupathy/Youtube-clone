@@ -10,6 +10,8 @@ export const videoLibraryReducer = (
   switch (type) {
     case "LOAD_VIDEOLIST":
       return { ...videoLibrary, videoList: payload };
+    case "LOAD_CATEGORIES":
+        return { ...videoLibrary, categories: payload };
     case "SET_NOTES":
       return {...videoLibrary, notes: payload}
     case "ADD_NOTE":
@@ -17,21 +19,7 @@ export const videoLibraryReducer = (
         ...videoLibrary,
         videoList: addNoteToVideo(videoLibrary.videoList, payload, value),
       };
-    case "DELETE_NOTE":
-      return {
-        ...videoLibrary,
-        videoList: removeNoteFromVideo(videoLibrary.videoList, payload, value),
-      };
-    case "EDIT_NOTE":
-      return {
-        ...videoLibrary,
-        videoList: editNoteInVideo(
-          videoLibrary.videoList,
-          payload,
-          value,
-          editNote
-        ),
-      };
+    
     case "SET_SHOW_OPTIONS":
       return { ...videoLibrary, showOptions: payload };
     case "SET_SHOW_MODAL":
@@ -42,7 +30,7 @@ export const videoLibraryReducer = (
       return {
         ...videoLibrary,
         toast: {
-          value: !videoLibrary.toast.value,
+          value: value,
           message: payload,
         },
       };

@@ -2,10 +2,12 @@ import "./SideBar.css";
 import {NavLink} from "react-router-dom";
 import { useMyPlaylist } from "../Context/MyPlaylistContext";
 import { getIdOfAPlaylist } from "../utils/utils";
+import { useAuth } from "../Context/AuthContext";
 
 
 export const SideBar = () => {
     const { myPlaylist } = useMyPlaylist();
+    const { auth } = useAuth();
 
     return (
     <div className = "sidebar">

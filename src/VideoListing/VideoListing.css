@@ -19,6 +19,20 @@
 	z-index: 7;
 }
 
+.category-nav {
+	padding: 0.5rem;
+	/* margin: 0.5rem; */
+}
+
+.category-container {
+	margin: 1rem;
+	/* margin-left: 4rem; */
+	margin-bottom: 1rem;
+	display: flex;
+	/* justify-content: space-between; */
+	flex-wrap: wrap;
+}
+
 @media only screen and (min-width: 600px) {
 	.videoListing-grid {
 		margin: 1rem;
@@ -33,8 +47,11 @@
 		grid-template-columns: 1fr 1fr 1fr;
 		grid-column-gap: 1.75rem;
 		grid-row-gap: 2rem;
-		margin-left: 5rem;
 		margin-bottom: 0;
+		margin-left: 5rem;
+	}
+	.category-container {
+		margin-left: 4.5rem;
 	}
 
 	@media only screen and (min-width: 1250px) {

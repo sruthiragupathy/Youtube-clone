@@ -73,3 +73,7 @@
 .delete-note:hover {
 	transform: scale(1.1);
 }
+
+.light-grey-txt {
+	color: var(--midgrey);
+}

@@ -10,6 +10,8 @@
 	height: 2rem;
 	background: #fff;
 	z-index: 2;
+	margin-bottom: 0.5rem;
+	box-shadow: 0px 5px 15px var(--light-grey1);
 }
 
 /* @media only screen and (min-width: 900px) {
@@ -116,6 +118,10 @@
 	z-index: 5;
 }
 
+.mobile-view-hidden {
+	display: none;
+}
+
 @media only screen and (min-width: 900px) {
 	.profile {
 		display: block;
@@ -126,4 +132,8 @@
 	.top-navbar {
 		padding-right: 1.5rem;
 	}
+	.mobile-view-hidden {
+		display: block;
+	}
+	
 }

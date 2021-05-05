@@ -3,7 +3,7 @@ import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import PlaylistAddRoundedIcon from '@material-ui/icons/PlaylistAddRounded';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
-import { getIdOfAPlaylist, getIdsInPlaylistCategory } from "../utils/utils";
+import { getIdOfAPlaylist, getIdsInPlaylistCategory, hideToast } from "../utils/utils";
 import { useMyPlaylist } from "../Context/MyPlaylistContext";
 import { useVideoList } from "../Context/VideoLibraryContext";
 import { Toast } from "../Toast/Toast";
@@ -12,6 +12,8 @@ import ReactPlayer from 'react-player';
 import axios from "axios";
 import { BACKEND } from "../utils/api";
 import { useParams } from "react-router";
+import { useAuth } from "../Context/AuthContext";
+
 // import { useEffect, useState } from "react";
 
 
@@ -21,6 +23,7 @@ export const VideoContainer = ({video,videoPlayerRef}) => {
     // const [video, setVideo] = useState()
     const { myPlaylist, myPlaylistDispatch } = useMyPlaylist();
     const { videoLibrary,videoLibraryDispatch } = useVideoList();
+    const { auth } = useAuth();
     const {videoId} = useParams()
 
     const isVideoInLibrary = (libraryId) => {
@@ -34,21 +37,36 @@ export const VideoContainer = ({video,videoPlayerRef}) => {
     const likedPlaylistId = getIdOfAPlaylist(myPlaylist.myLibrary, "Liked Videos")
     const savedPlaylistId = getIdOfAPlaylist(myPlaylist.myLibrary, "Saved Videos")
     const addToLibraryHandler = async (playlistCategory, libraryId, videoId) => {
+        if(!auth.isLoggedIn) {
+            videoLibraryDispatch({type:"TOGGLE_TOAST",payload:"Login Toast", value:true});
+            hideToast(videoLibraryDispatch, 3000);
+        }
+        else{
         if(isVideoInLibrary(video.videoId,libraryId)) {
           const  response  = await axios.delete(`${BACKEND}/playlist/${libraryId}/${video.videoId}`);
           myPlaylistDispatch({type: "ADD_VIDEO_TO_LIBRARY", payload: response.data.response});
-          videoLibraryDispatch({ type:"TOGGLE_TOAST", payload: `1 video removed from ${playlistCategory}` })
+          videoLibraryDispatch({ type:"TOGGLE_TOAST", payload: `1 video removed from ${playlistCategory}`, value: true })
+          hideToast(videoLibraryDispatch)
         }
         else {
           const  response  = await axios.post(`${BACKEND}/playlist/${libraryId}/${videoId}`);
           myPlaylistDispatch({type: "ADD_VIDEO_TO_LIBRARY", payload: response.data.response})
-          videoLibraryDispatch({ type:"TOGGLE_TOAST", payload: `1 video added to ${playlistCategory}` })
+          videoLibraryDispatch({ type:"TOGGLE_TOAST", payload: `1 video added to ${playlistCategory}`, value: true })
+          hideToast(videoLibraryDispatch)
+
         }
+    }
       };
 
     const saveToPlaylistHandler = (e) => {
         e.preventDefault();
+        if(!auth.isLoggedIn) {
+            videoLibraryDispatch({type:"TOGGLE_TOAST",payload:"Login Toast", value: true});
+            hideToast(videoLibraryDispatch, 3000);
+        }
+        else {
         videoLibraryDispatch({type:"SET_SHOW_MODAL",payload:video._id})
+        }
     }
 
     return (

@@ -16,12 +16,12 @@ export const LibraryCard = ({library}) => {
        myPlaylistDispatch({type: "REMOVE_LIBRARY", payload: response.data.response})
     }
 
-
+    console.log({videos});
     return (
         
-            <NavLink to = {`/library/${name}/${_id}`} className = "list relative">
+            videos.length!==0 && <NavLink to = {`/library/${name}/${_id}`} className = "list relative">
             <div className = "list__img">
-                <img src = {`https://i.ytimg.com/vi/${videos[0].video.videoId}/mqdefault.jpg`} alt = {name}/>
+                <img src = {`https://i.ytimg.com/vi/${videos[0]?.video?.videoId}/mqdefault.jpg`} alt = {name}/>
             </div>
             <div className = "list__details">
                 <div className = "details__title">{name}</div>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation,useNavigate } from "react-router"
 import { useAuth,getNameFromEmail } from "../Context/AuthContext";
-import { BACKEND } from "../utils/api";
+import { BACKEND, BACKENDAUTH } from "../utils/api";
 import { RestApiCalls } from "../utils/callRestApi";
 // import { useProduct } from "../../Context/ProductContext";
 
@@ -75,8 +75,8 @@ export const SignUp = () => {
         setErrorFromBackend("");
         setLoading(true)
         if(validateForm()){
-                const response = await RestApiCalls("POST", `${BACKEND}/signup`, user)
-                // console.log(response);
+                const response = await RestApiCalls("POST", `${BACKENDAUTH}/signup`, user)
+                console.log("response",response);
                 if(response?.success){
                     authDispatch({type:"SET_ISLOGGEDIN" , payload:true});
                     authDispatch({type:"SET_CURRENTUSER",payload:getNameFromEmail(user.email)});

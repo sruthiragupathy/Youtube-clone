@@ -26,3 +26,21 @@ export const getVideoById = (videoList, videoId) => {
   return videoList.filter(video => video._id===videoId)
 
 }
+
+export const hideToast = (dispatch, seconds = 1000) => {
+  setTimeout(() => {
+      dispatch({type:"TOGGLE_TOAST",payload:"", value: false});
+    }, seconds)
+}
+
+
+const privateRoutes = ["/library", "/watchlater"]
+
+export const isAPrivateRoute = (path) => {
+  const booleanArray = privateRoutes.map( route => {
+    // console.log(path.search(route))
+    return path.search(route) > -1 ? true :false
+  })
+  console.log(booleanArray)
+  return booleanArray.indexOf(true) > -1 ;
+}

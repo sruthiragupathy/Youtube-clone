@@ -16,6 +16,7 @@ import {SignUp} from './Login/SignUp';
 import { useAuth } from './Context/AuthContext';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import axios from 'axios'
+import { PrivateRoutes } from './Navbar/PrivateRoutes'
 
 	function App() {
 		const { videoLibrary, videoLibraryDispatch } = useVideoList()
@@ -47,6 +48,16 @@ import axios from 'axios'
 				})
 
 
+			})() && 
+			(async function () {
+				const { response } = await RestApiCalls('GET', `${BACKEND}/categories`)
+				console.log({response})
+				videoLibraryDispatch({
+					type: 'LOAD_CATEGORIES',
+					payload: response.response,
+				})
+
+
 			})()
 			console.log({ auth })
 		}, [])
@@ -64,9 +75,9 @@ import axios from 'axios'
         			<CircularProgress color = "primary"/>
       				</div>  : (
 					<Routes>
-						<Route path='/watchlater/:watchLaterId' element={<WatchLater />} />
-						<Route path='/library/:libraryName/:libraryId' element={<StackedListTemplate />} />
-						<Route path='/library' element={<Library/>} />
+						<PrivateRoutes path='/watchlater/:watchLaterId' element={<WatchLater />} />
+						<PrivateRoutes path='/library/:libraryName/:libraryId' element={<StackedListTemplate />} />
+						<PrivateRoutes path='/library' element={<Library/>} />
 						<Route path='/video/:videoId' element={<PlayVideoPage/>} />
 						<Route path = '/login' element = {<Login/>} />
 						<Route path = '/signup' element = {<SignUp/>} />

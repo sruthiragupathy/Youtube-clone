@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../Context/AuthContext";
 import { SearchInput } from "./SearchInput";
 import "./TopNavBar.css";
-
+import {isAPrivateRoute} from "../utils/utils"
 export const TopNavBar = () => {
+  const location = useLocation();
+  console.log({location});
     const useOutsideClickDetecter = (ref) => {
         useEffect(() => {
             function handleClickOutside(event) {
@@ -19,20 +21,22 @@ export const TopNavBar = () => {
             };
         }, [ref]);
       }
-    const { auth } = useAuth();
+    const { auth, logoutHandler } = useAuth();
     const [hover, setHover] = useState(false)
     const wrapperRef = useRef(null);
     useOutsideClickDetecter(wrapperRef);
     const navigate = useNavigate();
     const loginHandler = () => {
-    navigate('/login')
-   }
+      navigate("/login")
+    }
     const hoverHandler = () => {
      setHover(hover => !hover)
    }
    const logout = () => {
-    // console.log(privateRoutes.includes(location.pathname))
     setHover(hover => false);
+    console.log(location.pathname)
+    logoutHandler(`${isAPrivateRoute(location.pathname) ? "/" : location.pathname+location.search?location.search:""}`)
+    
   }
  
     return (
@@ -55,7 +59,7 @@ export const TopNavBar = () => {
           <div onClick = {hoverHandler}  className = "purple-txt flex-center pointer profile">
             <span>Hi {auth?.currentUser?auth.currentUser:""}!</span>
           </div> : 
-          <div className = "purple-txt pointer" onClick = {loginHandler}>LOGIN / SIGNUP</div>
+          <div className = "purple-txt pointer mobile-view-hidden" onClick = {loginHandler}>LOGIN / SIGNUP</div>
         }
         </nav>
          { hover && <div className = "profile-card"  ref={wrapperRef}>
