@@ -40,10 +40,7 @@
 }
 
 /* @media only screen and (min-width: 900px) {
-  .main-video__container {
-    width: 70%;
-  }
-  .main-video__description {
-    padding: 0;
-  }
+	.main-video__container {
+		left: 10rem;
+	}
 } */

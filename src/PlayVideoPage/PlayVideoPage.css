@@ -1,12 +1,13 @@
 .main-video-page {
-  display: grid;
-  grid-template-columns: 1fr;
+	display: grid;
+	grid-template-columns: 1fr;
 }
 
 @media screen and (min-width: 900px) {
-  .main-video-page {
-    margin: 0 3rem;
-    grid-template-columns: 1.25fr 0.5fr;
-    grid-gap: 2rem;
-  }
+	.main-video-page {
+		margin: 0 1rem;
+		margin-left: 5rem;
+		grid-template-columns: 1.25fr 0.5fr;
+		grid-gap: 2rem;
+	}
 }

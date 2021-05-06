@@ -4,19 +4,16 @@ import { useParams } from "react-router"
 import { VideoContainer } from "./VideoContainer";
 import "./PlayVideoPage.css";
 import { Notes } from "./Notes";
-// import { useVideoList } from "../Context/VideoLibraryContext";
 import axios from "axios";
 import { BACKEND } from "../utils/api";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { BottomNavBar } from "../Navbar/BottomNavBar";
+import { SideBar} from "../Navbar/SideBar";
 
 
 export const PlayVideoPage = () => {
     const {videoId} = useParams();
-    // const { videoLibrary } = useVideoList();
     const [video, setVideo] = useState()
-    // const getVideoById = (videoId) => {
-    //     return videoLibrary.videoList.find( video => video._id === videoId);
-    // }
 
     const videoPlayerRef = useRef()
 
@@ -25,6 +22,7 @@ export const PlayVideoPage = () => {
             try{
             const  response = await axios.get(`${BACKEND}/video/${videoId}`) ;
             // if(response.status === 200) {
+                console.log({response})
               setVideo(response.data.response)
              }
              catch(error){
@@ -34,7 +32,10 @@ export const PlayVideoPage = () => {
     }, [])
 
     return(
-        video ? 
+        <div>
+        <BottomNavBar/>
+        <SideBar/>
+        {video ? 
         <div className = "main-video-page">
             <VideoContainer video = {video} videoPlayerRef = {videoPlayerRef} />
             <Notes video = {video} videoPlayerRef = {videoPlayerRef}/>
@@ -42,5 +43,8 @@ export const PlayVideoPage = () => {
         <div className = "loader">
         	<CircularProgress color = "primary"/>
       	</div> 
+        }
+        </div>
+
     )
 }
