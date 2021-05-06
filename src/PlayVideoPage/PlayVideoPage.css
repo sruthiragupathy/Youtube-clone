@@ -1,6 +1,7 @@
 .main-video-page {
 	display: grid;
 	grid-template-columns: 1fr;
+	margin-bottom: 4rem;
 }
 
 @media screen and (min-width: 900px) {

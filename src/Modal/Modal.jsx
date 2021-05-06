@@ -7,6 +7,7 @@ import { useVideoList } from "../Context/VideoLibraryContext";
 import { BACKEND } from "../utils/api";
 import axios from "axios";
 import { useAuth } from "../Context/AuthContext";
+import { hideToast } from "../utils/utils";
 
 export const Modal = ({ video }) => {
 
@@ -28,6 +29,7 @@ export const Modal = ({ video }) => {
     myPlaylistDispatch({ type: "SET_ALL_CHECKED_TO_FALSE" });
   };
   const checkboxHandler = async (libraryId, videoId) => {
+    videoLibraryDispatch({type: "TOGGLE_TOAST", payload: "Updating playlist....", value: true})
     if(isVideoInLibrary(videoId,libraryId)) {
       const  response  = await axios.delete(`${BACKEND}/playlist/${libraryId}/${videoId}`);
       myPlaylistDispatch({type: "ADD_VIDEO_TO_LIBRARY", payload: response.data.response})
@@ -36,6 +38,9 @@ export const Modal = ({ video }) => {
       const  response  = await axios.post(`${BACKEND}/playlist/${libraryId}/${videoId}`);
       myPlaylistDispatch({type: "ADD_VIDEO_TO_LIBRARY", payload: response.data.response})
     }
+    videoLibraryDispatch({type: "TOGGLE_TOAST", payload: "Playlist Updated", value: true});
+    hideToast(videoLibraryDispatch)
+
   };
 
   const inputChangeHandler = (e) => {
