@@ -27,7 +27,8 @@ export const videoLibrary = [
             "liveBroadcastContent": "none",
             "publishTime": "2021-03-22T17:08:39Z",
             "imageURL":"https://yt3.ggpht.com/ytc/AAUvwnh43mDEt3gkz4xqFSPYj14O0plWQYTHVqksN0HL_Q=s68-c-k-c0x00ffffff-no-rj"
-        }
+        },
+        notes: []
     },
     {
         "id": "4W7OjHnjXsQ",
@@ -57,7 +58,8 @@ export const videoLibrary = [
             "liveBroadcastContent": "none",
             "publishTime": "2019-12-20T16:06:06Z",
             "imageURL":"https://yt3.ggpht.com/ytc/AAUvwnh43mDEt3gkz4xqFSPYj14O0plWQYTHVqksN0HL_Q=s68-c-k-c0x00ffffff-no-rj"
-        }
+        },
+        notes: []
     },
     {
         "id": "8HI4j7Lillk",
@@ -87,7 +89,8 @@ export const videoLibrary = [
             "liveBroadcastContent": "none",
             "publishTime": "2019-05-20T16:43:01Z",
             "imageURL":"https://yt3.ggpht.com/ytc/AAUvwnh43mDEt3gkz4xqFSPYj14O0plWQYTHVqksN0HL_Q=s68-c-k-c0x00ffffff-no-rj"
-        }
+        },
+        notes: []
     },
     {
         "id": "sG9GHPO5l3E",
@@ -117,7 +120,8 @@ export const videoLibrary = [
             "liveBroadcastContent": "none",
             "publishTime": "2019-10-11T16:41:24Z",
             "imageURL":"https://yt3.ggpht.com/ytc/AAUvwnh43mDEt3gkz4xqFSPYj14O0plWQYTHVqksN0HL_Q=s68-c-k-c0x00ffffff-no-rj"
-        }
+        },
+        notes: []
     },
     {
         "id": "Z-SEqKaXEKA",
@@ -147,7 +151,8 @@ export const videoLibrary = [
             "liveBroadcastContent": "none",
             "publishTime": "2019-06-25T06:14:14Z",
             "imageURL":"https://yt3.ggpht.com/ytc/AAUvwnh43mDEt3gkz4xqFSPYj14O0plWQYTHVqksN0HL_Q=s68-c-k-c0x00ffffff-no-rj"
-        }
+        },
+        notes: []
     },
     {
         "id": "cV2V5wBeVFI",
@@ -177,7 +182,8 @@ export const videoLibrary = [
             "liveBroadcastContent": "none",
             "publishTime": "2020-11-16T18:00:52Z",
             "imageURL":"https://yt3.ggpht.com/ytc/AAUvwnh43mDEt3gkz4xqFSPYj14O0plWQYTHVqksN0HL_Q=s68-c-k-c0x00ffffff-no-rj"
-        }
+        },
+        notes: []
     },
     {
         "id": "JUqGtEO2cRw",
@@ -207,7 +213,8 @@ export const videoLibrary = [
             "liveBroadcastContent": "none",
             "publishTime": "2020-01-21T18:00:04Z",
             "imageURL":"https://yt3.ggpht.com/ytc/AAUvwnh43mDEt3gkz4xqFSPYj14O0plWQYTHVqksN0HL_Q=s68-c-k-c0x00ffffff-no-rj"
-        }
+        },
+        notes: []
     },
     {
         "id": "N8gbTwUmcO0",
@@ -237,7 +244,8 @@ export const videoLibrary = [
             "liveBroadcastContent": "none",
             "publishTime": "2020-02-21T18:38:45Z",
             "imageURL":"https://yt3.ggpht.com/ytc/AAUvwnh43mDEt3gkz4xqFSPYj14O0plWQYTHVqksN0HL_Q=s68-c-k-c0x00ffffff-no-rj"
-        }
+        },
+        notes: []
     },
     {
         "id": "pYt8hMp2IrM",
@@ -267,6 +275,7 @@ export const videoLibrary = [
             "liveBroadcastContent": "none",
             "publishTime": "2019-07-30T10:11:36Z",
             "imageURL":"https://yt3.ggpht.com/ytc/AAUvwnh43mDEt3gkz4xqFSPYj14O0plWQYTHVqksN0HL_Q=s68-c-k-c0x00ffffff-no-rj"
-        }
+        },
+        notes: []
     }
 ]

@@ -1,4 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 .App {
-  box-sizing: border-box;
-  text-align: center;
+	box-sizing: border-box;
+	text-align: center;
+	margin: 0;
+}
+
+a:focus {
+	outline: 2px solid var(--midgrey);
+	border-radius: 0.5rem;
+}
+
+.no-videos {
+	padding: 2rem;
+	font-size: 1.25rem;
+	color: var(--midgrey);
+}
+
+.width-100 {
+	width: 100%;
+}
+
+.heading {
+	/* width: 100%; */
+	font-size: 1.5rem;
+	font-weight: 1000;
+	text-align: left;
+	padding: 1rem 1rem 1rem 1.75rem;
+}
+
+.back_link {
+	/* width: 100%; */
+	padding: 1rem 1rem 0 1.75rem;
+	text-decoration: underline;
+	text-align: left;
+}
+
+.trash {
+	padding: 0;
+}
+
+.margin-left-4 {
+	margin-left: 0;
+}
+
+.purple-txt {
+	color: var(--purple);
+	font-weight: 1000;
+}
+
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: var(--light-grey);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: var(--light-grey1);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: var(--lightgrey2);
+}
+
+.amaara-logo {
+	font-weight: 500;
+	color: var(--purple);
+	font-family: 'Pacifico', cursive;
+	background: transparent;
+	border: none;
+	font-size: 1.15rem;
+}
+
+.loader {
+	position: absolute;
+	/* width: 100vw; */
+	height: 80vh;
+	top: 4rem;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--purple);
+	z-index: 10;
+}
+
+@media screen and (min-width: 900px) {
+	.margin-left-4 {
+		margin-left: 4rem;
+	}
+	.amaara-logo {
+		font-size: 1.5rem;
+	}
+}
+
+.btn {
+	border: 1.5px solid;
+}
+
+.capitalize {
+	text-transform: lowercase;
+}
+
+.capitalize::first-line {
+	text-transform: capitalize;
 }

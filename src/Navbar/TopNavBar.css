@@ -1,41 +1,145 @@
 .top-navbar {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 0.5rem;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  right: 0;
-  margin-left: 4rem;
-  height: 2rem;
-  background: #fff;
-  z-index: 2;
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem 0.5rem;
+	/* padding-right: 2rem; */
+	align-items: center;
+	position: sticky;
+	top: 0;
+	right: 0;
+	height: 2rem;
+	background: #fff;
+	z-index: 2;
+	margin-bottom: 1rem;
+	box-shadow: 0px 5px 15px var(--light-grey1);
 }
 
+/* @media only screen and (min-width: 900px) {
+  .top-navbar {
+    margin-left: 4rem;
+  }
+} */
+
 .fa-youtube-square {
-  color: var(--darkred);
-  margin-right: 0.5rem;
+	color: var(--purple);
+	margin-right: 0.5rem;
 }
 
 .youtube__title {
-  font-weight: 1000;
-  font-size: 1.25rem;
+	font-weight: 1000;
+	font-size: 1.25rem;
 }
 
 .top-navbar__form {
-  display: flex;
+	display: flex;
+	width: 77vw;
+	position: relative;
+}
+
+.profile {
+	display: none;
+}
+.autocomplete-items {
+	position: absolute;
+	border: 1px solid #d4d4d4;
+	border-bottom: none;
+	border-top: none;
+	background: #fff;
+	width: 100%;
+	z-index: 99;
+	/*position the autocomplete items to be the same width as the container:*/
+	top: 100%;
+	left: 0;
+	right: 0;
+	text-align: left;
+}
+
+.autocomplete-items div {
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+	background-color: #fff;
+	border-bottom: 1px solid #d4d4d4;
+	max-width: 100%;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	line-height: 2rem;
+}
+
+.autocomplete-items div:hover {
+	/*when hovering an item:*/
+	background-color: #e9e9e9;
 }
 
 .form__input {
-  padding: 0.75rem 0.5rem;
-  width: 55vw;
+	padding: 0.75rem 0.5rem;
+	width: 100%;
+	border: 0.5px solid var(--lightgrey2);
+	/* border-top-left-radius: 0.75rem;
+	border-bottom-left-radius: 0.75rem; */
+}
+
+.form__input:focus {
+	outline: 1px solid var(--midgrey);
 }
 
 .form__btn {
-  padding: 0 0.5rem;
+	padding: 0 0.5rem;
 }
 
 .fa-search {
-  font-size: 1.25rem;
-  /* color: var(--midgrey); */
+	font-size: 1.25rem;
+	/* color: var(--midgrey); */
+}
+
+.profile-card {
+	position: fixed;
+	top: 4rem;
+	background: #fff;
+	right: 1rem;
+	width: 8rem;
+	padding: 0.25rem;
+	z-index: 5;
+}
+
+.profile-card li,
+.profile-card a {
+	padding: 0.5rem;
+	display: block;
+}
+
+.profile-card button {
+	width: 100%;
+}
+
+.mobile-profile {
+	/* top: 100vh; */
+	position: fixed;
+	bottom: 4.25rem;
+	background: #fff;
+	right: 0.5rem;
+	width: 8rem;
+	padding: 0.25rem;
+	z-index: 5;
+}
+
+.mobile-view-hidden {
+	display: none;
+}
+
+@media only screen and (min-width: 900px) {
+	.profile {
+		display: block;
+	}
+	.top-navbar__form {
+		width: 50vw;
+	}
+	.top-navbar {
+		padding-right: 1.5rem;
+	}
+	.mobile-view-hidden {
+		display: block;
+	}
 }

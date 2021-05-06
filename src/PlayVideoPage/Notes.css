@@ -1,0 +1,79 @@
+.form-container {
+	/* width: 100%; */
+	padding: 0 1rem;
+	border: 1px solid var(--light-grey1);
+	height: 80vh;
+	overflow-y: scroll;
+}
+
+.input-container {
+	box-sizing: border-box;
+	margin-bottom: 1.5rem;
+	display: flex;
+}
+
+.take-note {
+	outline: none;
+	padding: 0.5rem;
+	width: 100%;
+	border: 0;
+	box-sizing: border-box;
+	border-bottom: 1px solid var(--lightgrey2);
+}
+
+.take-note:focus {
+	border-bottom: 2px solid var(--purple);
+}
+
+.add-note-btn {
+	background: var(--purple);
+	color: var(--light-grey);
+	border: 0;
+}
+.note {
+	color: var(--midgrey);
+	padding: 0.5rem;
+	border-radius: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	border: 1px solid var(--light-grey1);
+	background-color: var(--light-grey);
+	margin-bottom: 1rem;
+}
+.flex1 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.note span:nth-child(1) {
+	margin-bottom: 1rem;
+}
+.small-txt {
+	font-size: smaller;
+}
+
+.btn-transparent {
+	background: transparent;
+	border: 0;
+}
+
+.edit {
+	color: var(--purple);
+	transition: all 100ms ease-in-out;
+}
+
+.delete-note {
+	color: var(--darkred);
+	transition: all 100ms ease-in-out;
+}
+
+.edit:hover,
+.delete-note:hover {
+	transform: scale(1.1);
+}
+
+.light-grey-txt {
+	color: var(--midgrey);
+}
