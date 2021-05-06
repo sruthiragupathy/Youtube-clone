@@ -6,8 +6,6 @@ import {useEffect, useState} from "react";
 import { useAuth } from "../Context/AuthContext";
 import { useVideoList } from "../Context/VideoLibraryContext";
 
-// import { useProduct } from "../Context/ProductContext";
-
 
 export const Login = () => {
     const navigate = useNavigate();

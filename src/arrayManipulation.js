@@ -62,7 +62,6 @@ export const removeVideoFromACategory = (library,category,videoId) => {
 
     return library.map( item => {
         if(item.name === category){
-            // item.videoList = item.videoList.filter(video => video.id === videoId)
             return {...item, videoList:item.videoList.filter(video => video.id !== videoId)}
         }
         return item;

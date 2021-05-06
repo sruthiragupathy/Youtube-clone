@@ -14,13 +14,10 @@ import { BACKEND } from "../utils/api";
 import { useParams } from "react-router";
 import { useAuth } from "../Context/AuthContext";
 
-// import { useEffect, useState } from "react";
 
 
 
 export const VideoContainer = ({video,videoPlayerRef}) => {
-    // const {_id, videoId, title,  channelTitle, channelProfile, viewCount} = video;
-    // const [video, setVideo] = useState()
     const { myPlaylist, myPlaylistDispatch } = useMyPlaylist();
     const { videoLibrary,videoLibraryDispatch } = useVideoList();
     const { auth } = useAuth();

@@ -64,7 +64,6 @@ export const TopNavBar = () => {
         <button className = "btn btn-outline-primary" onClick = {logout}>Logout</button>
         </div>
         }
-        {/* <SearchInput/> */}
 
         </>
     )

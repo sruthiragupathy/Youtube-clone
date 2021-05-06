@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { RestApiCalls } from './utils/callRestApi'
-import { useVideoList } from './Context/VideoLibraryContext'
+import { useVideoList,useMyPlaylist, useAuth } from './Context/index'
 import { VideoListing } from './VideoListing/VideoListing'
 import { TopNavBar } from './Navbar/TopNavBar.jsx'
 import { Routes, Route } from 'react-router-dom'
-import { useMyPlaylist } from './Context/MyPlaylistContext'
 import { WatchLater } from './Watch Later/WatchLater'
 import { Library } from './Library/Library'
 import { StackedListTemplate } from './StackedListTemplate/StackedListTemplate'
@@ -13,7 +12,6 @@ import { PlayVideoPage } from './PlayVideoPage/PlayVideoPage'
 import { BACKEND } from './utils/api'
 import {Login} from './Login/Login';
 import {SignUp} from './Login/SignUp';
-import { useAuth } from './Context/AuthContext';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import axios from 'axios'
 import { PrivateRoutes } from './Navbar/PrivateRoutes'
@@ -86,9 +84,6 @@ import { PrivateRoutes } from './Navbar/PrivateRoutes'
 						<Route path='/' end element={<VideoListing />} />
 					</Routes>
 				)}
-		<Routes>
-			
-		</Routes>
 			</div>
 		)
 	}

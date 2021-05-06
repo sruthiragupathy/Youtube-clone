@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useLocation,useNavigate } from "react-router"
 import { useAuth,getNameFromEmail } from "../Context/AuthContext";
+import { useVideoList } from "../Context/VideoLibraryContext";
 import { BACKEND, BACKENDAUTH } from "../utils/api";
 import { RestApiCalls } from "../utils/callRestApi";
-// import { useProduct } from "../../Context/ProductContext";
+import { hideToast } from "../utils/utils";
 
 
 import "./Login.css"
@@ -21,7 +22,7 @@ const isValidPassword = (password) => {
 
 export const SignUp = () => {
     const {auth, authDispatch} = useAuth();
-    // const {dispatch} = useProduct();
+    const {videoLibraryDispatch} = useVideoList();
     const navigate = useNavigate();
     const [user, setUser] = useState({
         firstName:"",
@@ -66,11 +67,7 @@ export const SignUp = () => {
         }
         return validationSuccess;
    }
-   const hideToast = () => {
-    setTimeout(() => {
-        // dispatch({type:"TOGGLE_TOAST",payload:""});
-      }, 3000)
-}
+
     const signUpHandler = async (from) => {
         setErrorFromBackend("");
         setLoading(true)
@@ -83,8 +80,8 @@ export const SignUp = () => {
                     localStorage.setItem("logincredentials",
                     JSON.stringify({isUserLoggedIn:true, userName: getNameFromEmail(user.email), _id:response.user._id }))
                     navigate(from,{replace:true})
-                    // dispatch({type:"TOGGLE_TOAST",payload:"You have been signed up successfully, Happy Shopping"});
-                    hideToast()
+                    videoLibraryDispatch({type:"TOGGLE_TOAST",payload:"SignUp successful, Continue Watching", value: true});
+                    hideToast(videoLibraryDispatch, 3000)
                 }
                 else {
                     setErrorFromBackend("User already exists")

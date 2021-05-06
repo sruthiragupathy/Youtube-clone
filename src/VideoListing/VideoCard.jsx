@@ -1,7 +1,5 @@
-// import axios from "axios";
-// import { NavLink } from "react-router-dom";
+
 import { useVideoList } from "../Context/VideoLibraryContext";
-// import { Modal } from "../Modal/Modal";
 import { Options } from "./Options";
 import "./VideoCard.css";
 

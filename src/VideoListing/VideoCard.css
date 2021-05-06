@@ -1,6 +1,5 @@
 .video__card {
 	width: 100%;
-	/* cursor: pointer; */
 	transition: all 0.2s ease-in-out;
 	z-index: 4;
 	text-align: left;
@@ -41,7 +40,6 @@
 .txt__title {
 	font-weight: 1000;
 	font-size: 1rem;
-	/* text-align: justify; */
 	display: -webkit-box;
 	max-width: 15rem;
 	-webkit-line-clamp: 2;
@@ -67,16 +65,11 @@
 }
 
 .video-card__description .btn-icon {
-	/* padding-right: 0.5rem; */
 	width: 2.5rem;
 	height: 1.75rem;
 	color: var(--midgrey);
 	text-align: center;
 }
-
-/* .video-card__description .btn-icon:hover {
-  background: var(--light-grey1);
-} */
 
 .fa-ellipsis-v {
 	font-size: 1.25rem;

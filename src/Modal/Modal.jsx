@@ -20,7 +20,6 @@ export const Modal = ({ video }) => {
   const createNewPlaylistHandler = (e) => {
     e.preventDefault();
     setOpenForm(true);
-    // inputEl.current.focus();
 
   };
   const closeHandler = (e) => {
@@ -29,8 +28,6 @@ export const Modal = ({ video }) => {
     myPlaylistDispatch({ type: "SET_ALL_CHECKED_TO_FALSE" });
   };
   const checkboxHandler = async (libraryId, videoId) => {
-    // e.preventDefault();
-    // e.stopPropagation();
     if(isVideoInLibrary(videoId,libraryId)) {
       const  response  = await axios.delete(`${BACKEND}/playlist/${libraryId}/${videoId}`);
       myPlaylistDispatch({type: "ADD_VIDEO_TO_LIBRARY", payload: response.data.response})
@@ -64,11 +61,29 @@ export const Modal = ({ video }) => {
     return videoIdsInCurrentLibrary.includes(videoId)
   }
 
-  // const handleKeyPress = (e) => {
-  //   if (e.key === "Enter" && newLibrary) {
-  //     createNewLibraryHandler();
-  //   }
-  // };
+  const formInput = () => {
+    return (
+      <form className="new_playlist" onSubmit = {createNewLibrary}>
+        <input
+          placeholder="Enter Playlist Name"
+          className="new-playlist__input"
+          value={newLibrary}
+          onChange={inputChangeHandler}
+          />
+        {error && <div className="error">{error}</div>}
+        <div className="create-btn-container">
+          <button
+            type = "submit"
+            className="form__create-btn"
+
+          >
+            CREATE
+          </button>
+        </div>
+      </form>
+    )
+  }
+
   return (
     <div className="modal">
       <div className="save flex">
@@ -98,26 +113,7 @@ export const Modal = ({ video }) => {
         } 
       </div>
 
-      {openForm ? (
-        <form className="new_playlist" onSubmit = {createNewLibrary}>
-          <input
-            placeholder="Enter Playlist Name"
-            className="new-playlist__input"
-            value={newLibrary}
-            onChange={inputChangeHandler}
-            />
-          {error && <div className="error">{error}</div>}
-          <div className="create-btn-container">
-            <button
-              type = "submit"
-              className="form__create-btn"
-
-            >
-              CREATE
-            </button>
-          </div>
-        </form>
-      ) : (
+      {openForm ? formInput() : (
         <div className="new_playlist">
           <button className="create-btn" onClick={createNewPlaylistHandler}>
             <span className="plus">+</span>

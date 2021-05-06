@@ -24,14 +24,6 @@ export const LibraryCard = ({library}) => {
                 <div className = "details__title">{name}</div>
                 <div className = "details__channeltitle">{videos.length === 1 ? "1 video" : `${videos.length} videos`}</div>
             </div>
-            {/* <button className = "btn-options br" onClick = {moreOptionHandler}>
-                <i className = "fa fa-ellipsis-v"></i>
-            </button>
-            
-
-            <div className = "horizontal-card__option">
-                <button className = "btn-transparent">Remove from playlist</button>
-            </div> */}
             {!defaultPlaylists.includes(name) && <button className = "btn-icon br trash" onClick = {deletePlaylist}>
                 <i className ="fa fa-trash-o fa-2x"></i>
             </button>}

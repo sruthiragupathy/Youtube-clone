@@ -2,43 +2,26 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import {useNavigate} from "react-router-dom";
 import { RestApiCalls } from "../utils/callRestApi";
+import { authReducer } from "./authReducer";
 
 
 const AuthContext = createContext();
 
-const authReducer = (auth,{type,payload,value}) => {
-    switch(type){
-        case "SET_ISLOGGEDIN":
-            return {...auth, isLoggedIn:payload}
-        case "SET_CURRENTUSER":
-            return {...auth, currentUser:payload}
-        case "SET_LOADING":
-            return {...auth, loading:!auth.loading}
-        case "SET_USER": 
-            return {...auth, user: {_id: payload}}
-        case "RESET_USER":
-            return {...auth, user: {}, currentUser:""}
-        default:
-            return auth;
-
-    }
-
-}
 
 export const getNameFromEmail = (email) => {
     return email.split("@")[0];
 }
 
 export const AuthProvider = ({children}) => {
-    const [auth, authDispatch] = useReducer(authReducer,{
-        isLoggedIn : false,
-        currentUser : "",
-        loading : false,
-        user: {}
-    });
+    const authState = {
+            isLoggedIn : false,
+            currentUser : "",
+            loading : false,
+            user: {}
+        }
+    const [auth, authDispatch] = useReducer(authReducer, authState);
     useEffect(() => {
         const userCredentials = JSON.parse(localStorage?.getItem("logincredentials"))
-        // console.log(userCredentials.userName,userCredentials.isUserLoggedIn);
         userCredentials?.isUserLoggedIn && 
         authDispatch({type:"SET_ISLOGGEDIN",payload:userCredentials.isUserLoggedIn})
         userCredentials?.userName &&

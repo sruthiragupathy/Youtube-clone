@@ -50,10 +50,6 @@ export const BottomNavBar = () => {
                 <i className = "fa fa-video-camera fa-2x"></i>
                 <span>Library</span>
             </NavLink>
-            {/* <NavLink to = "/" className = "sidebar__nav">
-            <i class="fa fa-user-circle fa-2x"></i>
-            <span>Profile</span>
-            </NavLink> */}
             {auth.user._id ? <div  className = "sidebar__nav" onClick = {hoverHandler}>
                 <i className="fa fa-user-circle fa-2x"></i>
                 <span>Profile</span>

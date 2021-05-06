@@ -25,10 +25,6 @@
 .row2__icons button {
 	margin-right: 0.5rem;
 }
-/* .btn-icon:hover {
-  background: var(--light-grey1);
-} */
-
 .channel-description {
 	display: flex;
 	justify-content: flex-start;

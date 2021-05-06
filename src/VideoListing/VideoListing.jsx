@@ -7,6 +7,8 @@ import { Link, useLocation } from "react-router-dom";
 import "./VideoListing.css";
 import { BottomNavBar } from "../Navbar/BottomNavBar";
 import { Category } from "./Category";
+import { Toast } from "../Toast/Toast";
+
 
 
 const useQuery = () => {
@@ -44,6 +46,7 @@ export const VideoListing = () => {
           );
         })}
       </div>
+      { videoLibrary.toast.value && <Toast/> }
     </>
   );
 };

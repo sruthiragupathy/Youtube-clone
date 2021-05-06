@@ -5,12 +5,7 @@ import { useVideoList } from "../Context/VideoLibraryContext";
 import "./Toast.css"
 
 export const Toast = () => {
-    const { videoLibrary, videoLibraryDispatch } = useVideoList();
-    // useEffect( () => {
-    //     setTimeout( () => {
-    //         videoLibraryDispatch({ type: "TOGGLE_TOAST", payload:""})
-    //     },1000)
-    // }, [])
+    const { videoLibrary } = useVideoList();
     return (
         
         videoLibrary.toast.message === "Login Toast" ? 

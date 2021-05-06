@@ -24,14 +24,6 @@ export const HorizontalCard = ({video, libraryId}) => {
                 <div className = "details__title">{title}</div>
                 <div className = "details__channeltitle">{channelTitle}</div>
             </div>
-            {/* <button className = "btn-options br" onClick = {moreOptionHandler}>
-                <i className = "fa fa-ellipsis-v"></i>
-            </button>
-            
-
-            <div className = "horizontal-card__option">
-                <button className = "btn-transparent">Remove from playlist</button>
-            </div> */}
             <button class = "btn-icon br trash" onClick = {deleteFromPlaylist}>
                 <i class="fa fa-trash-o fa-2x"></i>
             </button>
