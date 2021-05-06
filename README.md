@@ -1,7 +1,7 @@
 # Amaara-Tv - Video Library Application
 
 Amaara-tv provides exclusive fashion contents 
-### functionalities 
+### Functionalities Implemented
 - Video Listing
 - Find videos by search
 - Watch videos based on category
@@ -11,5 +11,5 @@ Amaara-tv provides exclusive fashion contents
 - Like and save videos
 - Take notes
 
-[Backend Repository](https://github.com/sruthiragupathy/Youtube-Clone-Backend)
-[amaara-Tv](https://amaara-tv.netlify.app/)
+- [Backend Repository](https://github.com/sruthiragupathy/Youtube-Clone-Backend)
+- [amaara-Tv](https://amaara-tv.netlify.app/)
