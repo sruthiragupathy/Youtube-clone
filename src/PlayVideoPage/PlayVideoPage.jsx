@@ -20,8 +20,6 @@ export const PlayVideoPage = () => {
 		(async function () {
 			try {
 				const response = await axios.get(`${BACKEND}/video/${videoId}`);
-				// if(response.status === 200) {
-				console.log({ response });
 				setVideo(response.data.response);
 			} catch (error) {
 				console.log(error.message);

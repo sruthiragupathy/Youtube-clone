@@ -20,7 +20,9 @@ import { useAuth } from '../Context/AuthContext';
 export const VideoContainer = ({ video, videoPlayerRef }) => {
 	const { myPlaylist, myPlaylistDispatch } = useMyPlaylist();
 	const { videoLibrary, videoLibraryDispatch } = useVideoList();
-	const { auth } = useAuth();
+	const {
+		auth: { token },
+	} = useAuth();
 
 	const isVideoInLibrary = (videoId, libraryId) => {
 		const currentLibrary = myPlaylist.myLibrary.find(
@@ -41,7 +43,7 @@ export const VideoContainer = ({ video, videoPlayerRef }) => {
 		'Saved Videos',
 	);
 	const addToLibraryHandler = async (playlistCategory, libraryId, videoId) => {
-		if (!auth.isLoggedIn) {
+		if (!token) {
 			videoLibraryDispatch({
 				type: 'TOGGLE_TOAST',
 				payload: 'Login Toast',
@@ -50,9 +52,13 @@ export const VideoContainer = ({ video, videoPlayerRef }) => {
 			hideToast(videoLibraryDispatch, 3000);
 		} else {
 			if (isVideoInLibrary(video._id, libraryId)) {
-				const response = await axios.delete(
-					`${BACKEND}/playlist/${libraryId}/${video._id}`,
-				);
+				const response = await axios({
+					method: 'DELETE',
+					url: `${BACKEND}/playlist/${libraryId}/${video._id}`,
+					headers: {
+						authorization: token,
+					},
+				});
 				myPlaylistDispatch({
 					type: 'ADD_VIDEO_TO_LIBRARY',
 					payload: response.data.response,
@@ -64,9 +70,13 @@ export const VideoContainer = ({ video, videoPlayerRef }) => {
 				});
 				hideToast(videoLibraryDispatch);
 			} else {
-				const response = await axios.post(
-					`${BACKEND}/playlist/${libraryId}/${video._id}`,
-				);
+				const response = await axios({
+					method: 'POST',
+					url: `${BACKEND}/playlist/${libraryId}/${video._id}`,
+					headers: {
+						authorization: token,
+					},
+				});
 				myPlaylistDispatch({
 					type: 'ADD_VIDEO_TO_LIBRARY',
 					payload: response.data.response,
@@ -83,7 +93,7 @@ export const VideoContainer = ({ video, videoPlayerRef }) => {
 
 	const saveToPlaylistHandler = (e) => {
 		e.preventDefault();
-		if (!auth.isLoggedIn) {
+		if (!token) {
 			videoLibraryDispatch({
 				type: 'TOGGLE_TOAST',
 				payload: 'Login Toast',
@@ -112,8 +122,7 @@ export const VideoContainer = ({ video, videoPlayerRef }) => {
 					title={video.title}
 					frameBorder='0'
 					allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-					allowFullScreen
-					onStart={() => console.log('onStart')}></ReactPlayer>
+					allowFullScreen></ReactPlayer>
 			</div>
 			<div className='main-video__description'>
 				<h3 className='h3-title'>{video.title}</h3>

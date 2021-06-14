@@ -1,9 +1,10 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
-import { useAuth, getNameFromEmail } from '../Context/AuthContext';
-import { useVideoList } from '../Context/VideoLibraryContext';
+import { useVideoList } from '../Context';
+import { useAuth } from '../Context/AuthContext';
+
 import { BACKENDAUTH } from '../utils/api';
-import { RestApiCalls } from '../utils/callRestApi';
 import { hideToast } from '../utils/utils';
 
 import './Login.css';
@@ -16,7 +17,6 @@ const isValidEmail = (email) => {
 const isValidPassword = (password) => {
 	const passwordRegex = new RegExp('[0-9]+');
 	return password.length > 6 && passwordRegex.test(password);
-	// return false
 };
 
 export const SignUp = () => {
@@ -39,7 +39,7 @@ export const SignUp = () => {
 	const [errorFromBackend, setErrorFromBackend] = useState('');
 	const [loading, setLoading] = useState(false);
 	useEffect(() => {
-		auth.isLoggedIn && navigate('/');
+		auth.token && navigate('/');
 	});
 	const onChangeHandler = (e) => {
 		setUser({ ...user, [e.target.name]: e.target.value });
@@ -68,35 +68,28 @@ export const SignUp = () => {
 		}
 		return validationSuccess;
 	};
-
 	const signUpHandler = async (from) => {
 		setErrorFromBackend('');
 		setLoading(true);
 		if (validateForm()) {
-			const response = await RestApiCalls(
-				'POST',
-				`${BACKENDAUTH}/signup`,
-				user,
-			);
-			if (response?.success) {
-				authDispatch({ type: 'SET_ISLOGGEDIN', payload: true });
+			const response = await axios.post(`${BACKENDAUTH}/signup`, user);
+			if (response.status === 200) {
+				authDispatch({ type: 'SET_TOKEN', payload: response.data.token });
 				authDispatch({
 					type: 'SET_CURRENTUSER',
-					payload: getNameFromEmail(user.email),
+					payload: response.data.username,
 				});
-				authDispatch({ type: 'SET_USER', payload: response.user._id });
 				localStorage.setItem(
 					'logincredentials',
 					JSON.stringify({
-						isUserLoggedIn: true,
-						userName: getNameFromEmail(user.email),
-						_id: response.user._id,
+						token: response.data.token,
+						userName: response.data.username,
 					}),
 				);
 				navigate(from, { replace: true });
 				videoLibraryDispatch({
 					type: 'TOGGLE_TOAST',
-					payload: 'SignUp successful, Continue Watching',
+					payload: 'Login is successful, Continue watching',
 					value: true,
 				});
 				hideToast(videoLibraryDispatch, 3000);

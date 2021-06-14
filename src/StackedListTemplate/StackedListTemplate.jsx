@@ -22,7 +22,8 @@ export const StackedListTemplate = () => {
 						</div>
 						<div className='heading'>{`${libraryName}`}</div>
 
-						{getVideosOfPlaylistCategory(myPlaylist?.myLibrary, libraryId)
+						{myPlaylist.length !== 0 &&
+						getVideosOfPlaylistCategory(myPlaylist?.myLibrary, libraryId)
 							?.length ? (
 							getVideosOfPlaylistCategory(myPlaylist.myLibrary, libraryId).map(
 								(video) => {

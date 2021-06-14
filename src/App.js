@@ -20,23 +20,35 @@ function App() {
 	const { videoLibrary, videoLibraryDispatch } = useVideoList();
 	const { myPlaylistDispatch } = useMyPlaylist();
 	const [loading, setLoading] = useState(true);
-	const { auth } = useAuth();
+	const {
+		auth: { token },
+	} = useAuth();
 
 	const fetchPlaylist = async () => {
-		const { response } = await RestApiCalls(
-			'GET',
-			`${BACKEND}/${auth.user._id}/playlists`,
-		);
-		myPlaylistDispatch({ type: 'SET_LIBRARY', payload: response.response });
+		const { data, status } = await axios({
+			method: 'GET',
+			url: `${BACKEND}/playlists`,
+			headers: {
+				authorization: token,
+			},
+		});
+		if (status === 200)
+			myPlaylistDispatch({ type: 'SET_LIBRARY', payload: data.response });
 	};
 
 	const fetchNotes = async () => {
-		const response = await axios.get(`${BACKEND}/${auth.user._id}/notes`);
-
-		videoLibraryDispatch({
-			type: 'SET_NOTES',
-			payload: response.data.response,
+		const { data, status } = await axios({
+			method: 'GET',
+			url: `${BACKEND}/notes`,
+			headers: {
+				authorization: token,
+			},
 		});
+		if (status === 200)
+			videoLibraryDispatch({
+				type: 'SET_NOTES',
+				payload: data.response,
+			});
 	};
 
 	useEffect(() => {
@@ -62,9 +74,9 @@ function App() {
 	}, []);
 
 	useEffect(() => {
-		auth.user._id && fetchPlaylist() && fetchNotes();
+		token && fetchPlaylist() && fetchNotes();
 		// setLoading(false)
-	}, [auth.user._id]);
+	}, [token]);
 	return (
 		<div className={`App`}>
 			{videoLibrary.showModal && <div className='background-overlay'></div>}

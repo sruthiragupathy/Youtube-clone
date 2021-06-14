@@ -10,7 +10,9 @@ import { useAuth } from '../Context/AuthContext';
 import { hideToast } from '../utils/utils';
 
 export const Modal = ({ video }) => {
-	const { auth } = useAuth();
+	const {
+		auth: { token },
+	} = useAuth();
 	const { myPlaylist, myPlaylistDispatch } = useMyPlaylist();
 	const { videoLibraryDispatch } = useVideoList();
 	const [openForm, setOpenForm] = useState(false);
@@ -33,17 +35,25 @@ export const Modal = ({ video }) => {
 			value: true,
 		});
 		if (isVideoInLibrary(videoId, libraryId)) {
-			const response = await axios.delete(
-				`${BACKEND}/playlist/${libraryId}/${videoId}`,
-			);
+			const response = await axios({
+				method: 'DELETE',
+				url: `${BACKEND}/playlist/${libraryId}/${video._id}`,
+				headers: {
+					authorization: token,
+				},
+			});
 			myPlaylistDispatch({
 				type: 'ADD_VIDEO_TO_LIBRARY',
 				payload: response.data.response,
 			});
 		} else {
-			const response = await axios.post(
-				`${BACKEND}/playlist/${libraryId}/${videoId}`,
-			);
+			const response = await axios({
+				method: 'POST',
+				url: `${BACKEND}/playlist/${libraryId}/${video._id}`,
+				headers: {
+					authorization: token,
+				},
+			});
 			myPlaylistDispatch({
 				type: 'ADD_VIDEO_TO_LIBRARY',
 				payload: response.data.response,
@@ -66,10 +76,16 @@ export const Modal = ({ video }) => {
 	const createNewLibrary = async (e) => {
 		e.preventDefault();
 		if (newLibrary) {
-			const response = await axios.post(
-				`${BACKEND}/${auth.user._id}/playlists/${video._id}`,
-				{ name: newLibrary },
-			);
+			const response = await axios({
+				method: 'POST',
+				url: `${BACKEND}/playlists/${video._id}`,
+				data: {
+					name: newLibrary,
+				},
+				headers: {
+					authorization: token,
+				},
+			});
 			myPlaylistDispatch({
 				type: 'ADD_NEW_LIBRARY',
 				payload: response.data.response,

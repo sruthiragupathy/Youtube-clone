@@ -22,7 +22,7 @@ export const Login = () => {
 	const [errorFromBackend, setErrorFromBackend] = useState('');
 	const [loading, setLoading] = useState(false);
 	useEffect(() => {
-		auth.isLoggedIn && navigate('/');
+		auth.token && navigate('/');
 	}, []);
 
 	const validateForm = () => {

@@ -52,7 +52,7 @@ export const BottomNavBar = () => {
 			</NavLink>
 			<NavLink
 				to={
-					auth.isLoggedIn
+					auth.token
 						? `/watchlater/${
 								myPlaylist.myLibrary.length &&
 								getIdOfAPlaylist(myPlaylist.myLibrary, 'Watch Later')
@@ -65,13 +65,13 @@ export const BottomNavBar = () => {
 				<span>Watch Later</span>
 			</NavLink>
 			<NavLink
-				to={auth.isLoggedIn ? '/library' : '/login'}
+				to={auth.token ? '/library' : '/login'}
 				className='sidebar__nav'
 				activeClassName='selected'>
 				<i className='fa fa-video-camera fa-2x'></i>
 				<span>Library</span>
 			</NavLink>
-			{auth.user._id ? (
+			{auth.token ? (
 				<div className='sidebar__nav' onClick={hoverHandler}>
 					<i className='fa fa-user-circle fa-2x'></i>
 					<span>Profile</span>

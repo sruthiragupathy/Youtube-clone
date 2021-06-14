@@ -1,5 +1,7 @@
+import axios from 'axios';
 import { createContext, useContext, useEffect, useReducer } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { BACKENDAUTH } from '../utils/api';
 import { RestApiCalls } from '../utils/callRestApi';
 import { authReducer } from './authReducer';
 
@@ -11,20 +13,19 @@ export const getNameFromEmail = (email) => {
 
 export const AuthProvider = ({ children }) => {
 	const authState = {
-		isLoggedIn: false,
-		currentUser: '',
+		token: '',
+		userName: '',
 		loading: false,
-		user: {},
 	};
 	const [auth, authDispatch] = useReducer(authReducer, authState);
 	useEffect(() => {
 		const userCredentials = JSON.parse(
 			localStorage?.getItem('logincredentials'),
 		);
-		userCredentials?.isUserLoggedIn &&
+		userCredentials?.token &&
 			authDispatch({
-				type: 'SET_ISLOGGEDIN',
-				payload: userCredentials.isUserLoggedIn,
+				type: 'SET_TOKEN',
+				payload: userCredentials.token,
 			});
 		userCredentials?.userName &&
 			authDispatch({
@@ -38,30 +39,24 @@ export const AuthProvider = ({ children }) => {
 
 	const LoginUserWithCredentials = async (user, pathTo) => {
 		try {
-			const response = await RestApiCalls(
-				'POST',
-				`https://amaraapi.herokuapp.com/api/login`,
-				user,
-			);
-			if (response?.success) {
+			const { data, status } = await axios.post(`${BACKENDAUTH}/login`, user);
+			if (status === 200) {
 				localStorage.setItem(
 					'logincredentials',
 					JSON.stringify({
-						isUserLoggedIn: true,
-						userName: getNameFromEmail(user.email),
-						_id: response.response[0]._id,
+						token: data.token,
+						userName: data.username,
 					}),
 				);
-				authDispatch({ type: 'SET_ISLOGGEDIN', payload: true });
+				authDispatch({ type: 'SET_TOKEN', payload: data.token });
 				authDispatch({
 					type: 'SET_CURRENTUSER',
-					payload: getNameFromEmail(user.email),
+					payload: data.username,
 				});
-				authDispatch({ type: 'SET_USER', payload: response.response[0]._id });
 
 				navigate(pathTo, { replace: pathTo });
 			}
-			return response;
+			return data;
 		} catch (err) {
 			return err;
 		}
@@ -71,7 +66,7 @@ export const AuthProvider = ({ children }) => {
 		authDispatch({ type: 'SET_LOADING' });
 		setTimeout(() => {
 			localStorage?.removeItem('logincredentials');
-			authDispatch({ type: 'SET_ISLOGGEDIN', payload: false });
+			authDispatch({ type: 'SET_TOKEN', payload: false });
 			authDispatch({ type: 'SET_LOADING' });
 			authDispatch({ type: 'RESET_USER' });
 			navigate(to ? to : '/');

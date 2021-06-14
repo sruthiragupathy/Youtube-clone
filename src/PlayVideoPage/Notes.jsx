@@ -4,7 +4,6 @@ import AddIcon from '@material-ui/icons/Add';
 import { useVideoList } from '../Context/VideoLibraryContext';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
-// import { useRef } from "react";
 import axios from 'axios';
 import { BACKEND } from '../utils/api';
 import { useAuth } from '../Context/AuthContext';
@@ -18,26 +17,36 @@ export const Notes = ({ video, videoPlayerRef }) => {
 	const onChangeHandler = (e) => {
 		setNote(e.target.value);
 	};
-	const { auth } = useAuth();
+	const {
+		auth: { token },
+	} = useAuth();
 	const addNoteHandler = async (e) => {
 		e.preventDefault();
 		if (!edit) {
-			const response = await axios.post(
-				`${BACKEND}/${auth.user._id}/notes/${video._id}`,
-				{
+			const response = await axios({
+				method: 'POST',
+				url: `${BACKEND}/notes/${video._id}`,
+				data: {
 					note: note,
 					time: formatTime(videoPlayerRef.current.getCurrentTime()),
 				},
-			);
+				headers: {
+					authorization: token,
+				},
+			});
 			videoLibraryDispatch({
 				type: 'SET_NOTES',
 				payload: response.data.response,
 			});
 		} else {
-			const response = await axios.post(
-				`${BACKEND}/${auth.user._id}/notes/${video._id}/${editNote}`,
-				{ note: note },
-			);
+			const response = await axios({
+				method: 'POST',
+				url: `${BACKEND}/notes/${video._id}/${editNote}`,
+				data: { note: note },
+				headers: {
+					authorization: token,
+				},
+			});
 			videoLibraryDispatch({
 				type: 'SET_NOTES',
 				payload: response.data.response,
@@ -51,15 +60,19 @@ export const Notes = ({ video, videoPlayerRef }) => {
 		return videoLibrary.notes.find((item) => item.videoId === videoId)?.notes;
 	};
 	const editNotes = (note) => {
-		setNote((prev) => note.note);
-		setEdit((prev) => true);
-		setEditNote((prev) => note._id);
+		setNote(() => note.note);
+		setEdit(() => true);
+		setEditNote(() => note._id);
 	};
 
 	const deleteNote = async (noteId) => {
-		const response = await axios.delete(
-			`${BACKEND}/${auth.user._id}/notes/${video._id}/${noteId}`,
-		);
+		const response = await axios({
+			method: 'DELETE',
+			url: `${BACKEND}/notes/${video._id}/${noteId}`,
+			headers: {
+				authorization: token,
+			},
+		});
 		videoLibraryDispatch({
 			type: 'SET_NOTES',
 			payload: response.data.response,
@@ -79,14 +92,12 @@ export const Notes = ({ video, videoPlayerRef }) => {
 					onChange={onChangeHandler}
 				/>
 				<button
-					className={`add-note-btn ${auth.user._id ? '' : 'disabled'}`}
+					className={`add-note-btn ${token ? '' : 'disabled'}`}
 					type='submit'>
 					<AddIcon />
 				</button>
 			</form>
-			{!auth.user._id && (
-				<div className='light-grey-txt'>"Login to take notes"</div>
-			)}
+			{!token && <div className='light-grey-txt'>"Login to take notes"</div>}
 
 			{videoLibrary.videoList.length &&
 				(getNotes(video._id)

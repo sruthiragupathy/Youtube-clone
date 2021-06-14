@@ -54,7 +54,7 @@ export const TopNavBar = () => {
 				</div>
 
 				<SearchInput />
-				{auth.isLoggedIn ? (
+				{auth.token ? (
 					<div
 						onClick={hoverHandler}
 						className='purple-txt flex-center pointer profile'>

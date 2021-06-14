@@ -11,7 +11,6 @@ export const Category = () => {
 
 	const getCategoryButtonClassName = (categoryName) => {
 		return category === categoryName ? 'btn-primary' : 'btn-outline-primary';
-		// return ""
 	};
 	return (
 		<>
