@@ -18,7 +18,7 @@ Amaara-tv provides exclusive fashion contents
 - Node
 - Express
 - MongoDB
-- jwt authentication
+- JWT authentication
 
 ### Functionalities Implemented
 - Video Listing
