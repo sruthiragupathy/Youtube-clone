@@ -7,18 +7,22 @@ Amaara-tv provides exclusive fashion contents
  - [Frontend Code](https://github.com/sruthiragupathy/Youtube-clone)
  - [Backend Code](https://github.com/sruthiragupathy/Youtube-Clone-Backend)
 
+## Test Credentials
+ - email: test12@gmail.com
+ - password: test123
+
 ## Tech Stack
 
 ### Frontend
 - ReactJS
 - Style - UI Labs Component Library
-- Naviagation - React Router 
+- Navigation - React Router 
 
 ## Backend
 - Node
 - Express
 - MongoDB
-- jwt authentication
+- JWT authentication
 
 ### Functionalities Implemented
 - Video Listing
