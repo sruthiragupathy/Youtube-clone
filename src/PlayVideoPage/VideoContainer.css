@@ -25,10 +25,6 @@
 .row2__icons button {
 	margin-right: 0.5rem;
 }
-/* .btn-icon:hover {
-  background: var(--light-grey1);
-} */
-
 .channel-description {
 	display: flex;
 	justify-content: flex-start;
@@ -44,10 +40,7 @@
 }
 
 /* @media only screen and (min-width: 900px) {
-  .main-video__container {
-    width: 70%;
-  }
-  .main-video__description {
-    padding: 0;
-  }
+	.main-video__container {
+		left: 10rem;
+	}
 } */

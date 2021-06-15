@@ -1,9 +1,8 @@
 .form-container {
-	/* width: 100%; */
 	padding: 0 1rem;
 	border: 1px solid var(--light-grey1);
-	height: 80vh;
 	overflow-y: scroll;
+	margin-top: 1rem;
 }
 
 .input-container {
@@ -76,4 +75,11 @@
 
 .light-grey-txt {
 	color: var(--midgrey);
+}
+
+@media screen and (min-width: 900px) {
+	.form-container {
+		height: 80vh;
+		margin: 0;
+	}
 }

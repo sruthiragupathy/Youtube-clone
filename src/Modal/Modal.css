@@ -67,7 +67,6 @@
 	width: 14rem;
 	border: 0;
 	border-bottom: 2px solid var(--light-grey1);
-	/* margin-bottom: 0.75rem; */
 	outline: none;
 }
 .new-playlist__input:focus {

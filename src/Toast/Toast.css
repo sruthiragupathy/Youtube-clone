@@ -2,13 +2,13 @@
 	position: fixed;
 	bottom: 2.5rem;
 	right: 2rem;
-	/* width: 15rem; */
+	min-width: 15rem;
 	padding: 1rem;
 	background: var(--darkgrey);
 	color: var(--light-grey);
 	border-bottom: 7px solid var(--purple);
 	text-align: center;
-	z-index: 2;
+	z-index: 11;
 	visibility: hidden;
 }
 
