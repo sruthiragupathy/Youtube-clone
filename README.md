@@ -4,7 +4,7 @@ Amaara-tv provides exclusive fashion contents
 
 ## Application Links
  - [Live Demo](https://amaara-quiz.netlify.app/)
- - [Frontend Code](https://github.com/sruthiragupathy/Quiz-Master/tree/dev)
+ - [Frontend Code](https://github.com/sruthiragupathy/Youtube-clone)
  - [Backend Code](https://github.com/sruthiragupathy/Youtube-Clone-Backend)
 
 ## Tech Stack
