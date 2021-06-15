@@ -12,7 +12,7 @@ Amaara-tv provides exclusive fashion contents
 ### Frontend
 - ReactJS
 - Style - UI Labs Component Library
-- Naviagation - React Router 
+- Navigation - React Router 
 
 ## Backend
 - Node
